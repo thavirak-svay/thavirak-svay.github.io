@@ -551,7 +551,7 @@ const ExperienceTimeline = () => {
         <div className="relative">
           {}
           <div
-            className={`absolute left-[19px] md:left-1/2 top-0 bottom-0 w-px ${styles["timeline-line"]} transform md:-translate-x-1/2`}
+            className={`absolute left-[19px] md:left-1/2 top-0 bottom-0 w-1 ${styles["timeline-line"]} transform md:-translate-x-1/2`}
           />
 
           <div className="space-y-16">
