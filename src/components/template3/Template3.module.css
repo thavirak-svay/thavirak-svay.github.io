@@ -30,13 +30,27 @@
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 0.5rem;
-  transition: all 0.3s ease;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .template3GlassPanel:hover {
   background: rgba(255, 255, 255, 0.05);
   border-color: rgba(59, 130, 246, 0.3);
   box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
+}
+
+.template3GlassPanelGreen {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 0.5rem;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.template3GlassPanelGreen:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(16, 185, 129, 0.5);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
 }
 
 .template3Scrollbar::-webkit-scrollbar {
@@ -57,7 +71,11 @@
 }
 
 .template3ProjectCardContainer > *:first-child {
-  border-top: none !important;
+  border-top-color: transparent;
+}
+
+.template3ProjectCardContainer > *:first-child:hover {
+  border-top-color: rgba(59, 130, 246, 0.3);
 }
 
 .template3ProjectCardContainer > *:not(:first-child) {

@@ -462,7 +462,7 @@ const BentoGrid = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
-            className={`${styles.template1GlassPanel} p-8 rounded-none relative overflow-hidden group ${f.col} ${f.row} ${styles.template1NeonBorder} transition-all duration-300`}
+            className={`${styles.template1GlassPanel} p-8 rounded-none relative overflow-hidden group ${f.col} ${f.row} ${styles.template1NeonBorder} transition-colors duration-300`}
           >
             <div className="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-100 transition-opacity">
               {f.icon}

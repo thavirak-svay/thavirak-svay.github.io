@@ -334,7 +334,7 @@ const ProjectCard = ({
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className={`${styles.template3GlassPanel} border-t border-white/10 border-l-4 border-l-blue-500/50 hover:border-l-blue-500 transition-all p-6 md:p-8 group`}
+      className={`${styles.template3GlassPanel} border-t border-white/10 border-l-4 border-l-blue-500/50 hover:border-l-blue-500 transition-colors p-6 md:p-8 group`}
     >
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
         <div>
@@ -588,11 +588,14 @@ export default function Template3() {
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.5 }}
+              transition={{ delay: 0.5, duration: 0.5 }}
               className="md:col-span-2 hidden md:block"
             >
-              <div
-                className={`${styles.template3GlassPanel} p-1 rounded-lg rotate-3 hover:rotate-0 transition-transform duration-500`}
+              <motion.div
+                initial={{ rotate: 3 }}
+                whileHover={{ rotate: 0 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+                className={`${styles.template3GlassPanelGreen} p-1 rounded-lg`}
               >
                 <div
                   className={`bg-[#0a0a0a] rounded p-4 ${styles.template3FontMono} text-xs leading-relaxed overflow-hidden border border-white/5 shadow-2xl`}
@@ -645,7 +648,7 @@ export default function Template3() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
           </div>
         </section>
