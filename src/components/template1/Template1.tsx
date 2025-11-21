@@ -1,7 +1,12 @@
-"use client"
+"use client";
 
-import React, { useRef, useState, useEffect, useMemo } from "react"
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
+import React, { useRef, useState, useEffect, useMemo } from "react";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import {
   Terminal,
   Server,
@@ -24,16 +29,14 @@ import {
   ChevronRight,
   GitMerge,
   ShieldCheck,
-} from "lucide-react"
-
-// --- NATIVE WEBGL SHADER ---
+} from "lucide-react";
 
 const vertexShaderSource = `
   attribute vec2 position;
   void main() {
     gl_Position = vec4(position, 0.0, 1.0);
   }
-`
+`;
 
 const fragmentShaderSource = `
   precision mediump float;
@@ -73,143 +76,145 @@ const fragmentShaderSource = `
     vec2 st = gl_FragCoord.xy / uResolution.xy;
     st.x *= uResolution.x / uResolution.y;
 
-    // Mouse interaction
     vec2 mouse = uMouse * uResolution.xy / uResolution.y;
     float dist = distance(st, mouse);
     float interaction = smoothstep(0.5, 0.0, dist);
 
-    // Grid lines
     float scale = 10.0;
     vec2 grid = fract(st * scale);
     float line = step(0.98, grid.x) + step(0.98, grid.y);
 
-    // Flowing noise
     float noise = snoise(st * 3.0 + uTime * 0.1);
 
-    // Color mixing
-    vec3 colorBg = vec3(0.01, 0.01, 0.02); // Deep void
+    vec3 colorBg = vec3(0.01, 0.01, 0.02); 
     vec3 colorGrid = vec3(0.1, 0.1, 0.15);
-    vec3 colorHighlight = vec3(0.0, 0.94, 1.0); // Cyan
+    vec3 colorHighlight = vec3(0.0, 0.94, 1.0); 
 
     vec3 finalColor = mix(colorBg, colorGrid, line * 0.3);
 
-    // Add flowing "data" streams
     float stream = step(0.95, fract(st.y * 2.0 + noise * 0.5 + uTime * 0.2));
     finalColor += stream * colorHighlight * 0.1 * interaction;
 
-    // Add digital noise grain
     float grain = fract(sin(dot(st.xy, vec2(12.9898,78.233))) * 43758.5453);
     finalColor += grain * 0.03;
 
     gl_FragColor = vec4(finalColor, 1.0);
   }
-`
+`;
 
 const NativeShaderCanvas = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
+    const canvas = canvasRef.current;
+    if (!canvas) return;
 
-    const gl = canvas.getContext("webgl") as WebGLRenderingContext | null
-    if (!gl) return
+    const gl = canvas.getContext("webgl") as WebGLRenderingContext | null;
+    if (!gl) return;
 
-    const createShader = (gl: WebGLRenderingContext, type: number, source: string) => {
-      const shader = gl.createShader(type)
-      if (!shader) return null
+    const createShader = (
+      gl: WebGLRenderingContext,
+      type: number,
+      source: string
+    ) => {
+      const shader = gl.createShader(type);
+      if (!shader) return null;
 
-      gl.shaderSource(shader, source)
-      gl.compileShader(shader)
+      gl.shaderSource(shader, source);
+      gl.compileShader(shader);
       if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-        console.error(gl.getShaderInfoLog(shader))
-        gl.deleteShader(shader)
-        return null
+        console.error(gl.getShaderInfoLog(shader));
+        gl.deleteShader(shader);
+        return null;
       }
-      return shader
-    }
+      return shader;
+    };
 
-    const vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource)
-    const fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource)
+    const vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
+    const fragmentShader = createShader(
+      gl,
+      gl.FRAGMENT_SHADER,
+      fragmentShaderSource
+    );
 
-    if (!vertexShader || !fragmentShader) return
+    if (!vertexShader || !fragmentShader) return;
 
-    const program = gl.createProgram()
-    if (!program) return
+    const program = gl.createProgram();
+    if (!program) return;
 
-    gl.attachShader(program, vertexShader)
-    gl.attachShader(program, fragmentShader)
-    gl.linkProgram(program)
+    gl.attachShader(program, vertexShader);
+    gl.attachShader(program, fragmentShader);
+    gl.linkProgram(program);
 
     if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-      console.error(gl.getProgramInfoLog(program))
-      return
+      console.error(gl.getProgramInfoLog(program));
+      return;
     }
 
-    gl.useProgram(program)
+    gl.useProgram(program);
 
-    const positionBuffer = gl.createBuffer()
-    gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer)
-    const positions = [-1.0, -1.0, 1.0, -1.0, -1.0, 1.0, -1.0, 1.0, 1.0, -1.0, 1.0, 1.0]
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW)
+    const positionBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+    const positions = [
+      -1.0, -1.0, 1.0, -1.0, -1.0, 1.0, -1.0, 1.0, 1.0, -1.0, 1.0, 1.0,
+    ];
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
 
-    const positionLocation = gl.getAttribLocation(program, "position")
-    gl.enableVertexAttribArray(positionLocation)
-    gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0)
+    const positionLocation = gl.getAttribLocation(program, "position");
+    gl.enableVertexAttribArray(positionLocation);
+    gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
 
-    const uTimeLoc = gl.getUniformLocation(program, "uTime")
-    const uMouseLoc = gl.getUniformLocation(program, "uMouse")
-    const uResolutionLoc = gl.getUniformLocation(program, "uResolution")
+    const uTimeLoc = gl.getUniformLocation(program, "uTime");
+    const uMouseLoc = gl.getUniformLocation(program, "uMouse");
+    const uResolutionLoc = gl.getUniformLocation(program, "uResolution");
 
-    let mouseX = 0
-    let mouseY = 0
+    let mouseX = 0;
+    let mouseY = 0;
 
     const handleMouseMove = (e: MouseEvent) => {
-      const rect = canvas.getBoundingClientRect()
-      mouseX = (e.clientX - rect.left) / canvas.width
-      mouseY = 1.0 - (e.clientY - rect.top) / canvas.height
-    }
+      const rect = canvas.getBoundingClientRect();
+      mouseX = (e.clientX - rect.left) / canvas.width;
+      mouseY = 1.0 - (e.clientY - rect.top) / canvas.height;
+    };
 
-    window.addEventListener("mousemove", handleMouseMove)
+    window.addEventListener("mousemove", handleMouseMove);
 
     const render = (time: number) => {
-      if (canvas.width !== canvas.clientWidth || canvas.height !== canvas.clientHeight) {
-        canvas.width = canvas.clientWidth
-        canvas.height = canvas.clientHeight
-        gl.viewport(0, 0, canvas.width, canvas.height)
+      if (
+        canvas.width !== canvas.clientWidth ||
+        canvas.height !== canvas.clientHeight
+      ) {
+        canvas.width = canvas.clientWidth;
+        canvas.height = canvas.clientHeight;
+        gl.viewport(0, 0, canvas.width, canvas.height);
       }
 
-      gl.uniform1f(uTimeLoc, time * 0.001)
-      gl.uniform2f(uResolutionLoc, canvas.width, canvas.height)
-      gl.uniform2f(uMouseLoc, mouseX, mouseY)
+      gl.uniform1f(uTimeLoc, time * 0.001);
+      gl.uniform2f(uResolutionLoc, canvas.width, canvas.height);
+      gl.uniform2f(uMouseLoc, mouseX, mouseY);
 
-      gl.drawArrays(gl.TRIANGLES, 0, 6)
-      requestAnimationFrame(render)
-    }
+      gl.drawArrays(gl.TRIANGLES, 0, 6);
+      requestAnimationFrame(render);
+    };
 
-    requestAnimationFrame(render)
+    requestAnimationFrame(render);
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove)
-    }
-  }, [])
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
 
-  return <canvas ref={canvasRef} className="w-full h-full" />
-}
+  return <canvas ref={canvasRef} className="w-full h-full" />;
+};
 
-// --- Dynamic Experience Calculation ---
 const calculateExperienceYears = () => {
-  const startYear = 2019; // Career start year
+  const startYear = 2019;
   const currentYear = new Date().getFullYear();
   const years = currentYear - startYear;
   return `${years}+ Years`;
 };
 
-import styles from './Template1.module.css'
-
-
-
-// --- UI COMPONENTS ---
+import styles from "./Template1.module.css";
 
 const Navbar = () => (
   <motion.nav
@@ -219,16 +224,18 @@ const Navbar = () => (
     className="fixed top-6 left-0 right-0 z-50 flex justify-center pointer-events-none"
   >
     <div className="pointer-events-auto bg-[#0a0a0a]/90 backdrop-blur-xl border border-white/10 rounded-full px-2 py-2 flex items-center gap-4 md:gap-8 shadow-2xl shadow-cyan-900/10">
-      {/* Logo */}
+      {}
       <div className="pl-4 pr-2 flex items-center gap-3">
         <div className="relative flex h-2 w-2">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
           <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
         </div>
-        <span className="font-display font-bold text-sm tracking-wider text-white">THAVIRAK.SVAY</span>
+        <span className="font-display font-bold text-sm tracking-wider text-white">
+          THAVIRAK.SVAY
+        </span>
       </div>
 
-      {/* Nav Links - Extended */}
+      {}
       <div className="hidden md:flex items-center gap-1 bg-white/5 rounded-full px-1 py-1 border border-white/5">
         {["ABOUT", "SKILLS", "CAREER", "PROJECTS"].map((item) => (
           <a
@@ -241,7 +248,7 @@ const Navbar = () => (
         ))}
       </div>
 
-      {/* Contact */}
+      {}
       <div className="pr-2 flex items-center gap-2">
         <a
           href="mailto:thaavirak@gmail.com"
@@ -252,7 +259,7 @@ const Navbar = () => (
       </div>
     </div>
   </motion.nav>
-)
+);
 
 const Hero = () => {
   return (
@@ -267,7 +274,9 @@ const Hero = () => {
           <span className="px-2 py-1 border border-cyan-500/30 text-cyan-400 text-[10px] font-mono bg-cyan-950/20">
             SENIOR BACKEND ENGINEER
           </span>
-          <span className="text-slate-300 font-mono text-sm">Fintech Infrastructure • Distributed Systems</span>
+          <span className="text-slate-300 font-mono text-sm">
+            Fintech Infrastructure • Distributed Systems
+          </span>
         </motion.div>
 
         <motion.h1
@@ -278,7 +287,9 @@ const Hero = () => {
         >
           DISTRIBUTED <br />
           SYSTEMS{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-500 to-slate-700">ENGINEER</span>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-500 to-slate-700">
+            ENGINEER
+          </span>
         </motion.h1>
 
         <motion.p
@@ -287,9 +298,10 @@ const Hero = () => {
           transition={{ delay: 0.5 }}
           className="font-mono text-slate-300 max-w-2xl text-base md:text-lg leading-relaxed mb-12"
         >
-          Senior Backend Engineer with deep experience in high-throughput payment rails and microservices. I build the
-          immutable financial backbone for Wing Bank's super-app ecosystem, ensuring consistency, resilience, and
-          scalability in production.
+          Senior Backend Engineer with deep experience in high-throughput
+          payment rails and microservices. I build the immutable financial
+          backbone for Wing Bank's super-app ecosystem, ensuring consistency,
+          resilience, and scalability in production.
         </motion.p>
 
         <motion.div
@@ -302,7 +314,9 @@ const Hero = () => {
             href="#projects"
             className="group relative px-8 py-4 bg-white text-black font-display font-bold tracking-wide overflow-hidden inline-block text-center"
           >
-            <span className="relative z-10 group-hover:text-white transition-colors">SELECTED WORKS</span>
+            <span className="relative z-10 group-hover:text-white transition-colors">
+              SELECTED WORKS
+            </span>
             <div className="absolute inset-0 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 ease-out" />
           </a>
           <a
@@ -312,26 +326,32 @@ const Hero = () => {
           >
             <Linkedin size={16} />
             <span>Connect</span>
-            <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform" />
+            <ArrowRight
+              size={16}
+              className="transform group-hover:translate-x-1 transition-transform"
+            />
           </a>
         </motion.div>
       </div>
 
-      {/* Decorative Elements */}
+      {}
       <div className="absolute bottom-10 right-10 font-mono text-[10px] text-slate-400 flex flex-col items-end gap-2 hidden md:flex">
         <span>DOMAIN: FINTECH / PAYMENTS</span>
         <span>CONSISTENCY: STRONG / EVENTUAL</span>
         <span>STACK: SPRING BOOT 3 / K8S</span>
       </div>
     </section>
-  )
-}
+  );
+};
 
 const About = () => {
   const experienceYears = useMemo(() => calculateExperienceYears(), []);
 
   return (
-    <section id="about" className="py-32 px-6 md:px-20 relative z-10 border-b border-white/5">
+    <section
+      id="about"
+      className="py-32 px-6 md:px-20 relative z-10 border-b border-white/5"
+    >
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
           <div>
@@ -342,23 +362,27 @@ const About = () => {
             <div className="font-mono text-base text-slate-400 space-y-6 leading-relaxed">
               <p>
                 Engineering is about managing trade-offs. My focus is on{" "}
-                <span className="text-white">technical excellence</span> and system stability. I specialize in
-                implementing complex backend logic and decomposing legacy systems into manageable microservices.
+                <span className="text-white">technical excellence</span> and
+                system stability. I specialize in implementing complex backend
+                logic and decomposing legacy systems into manageable
+                microservices.
               </p>
               <p>
-                At <span className="text-white">Wing Bank</span>, I work with high-stakes financial data where
-                consistency is non-negotiable. I implement patterns like Saga and Outbox to ensure reliable distributed
-                transactions (CAP Theorem).
+                At <span className="text-white">Wing Bank</span>, I work with
+                high-stakes financial data where consistency is non-negotiable.
+                I implement patterns like Saga and Outbox to ensure reliable
+                distributed transactions (CAP Theorem).
               </p>
               <p>
-                As a <span className="text-white">Senior Engineer</span>, I believe in leading by example. I advocate
-                for clean code, comprehensive testing, and building systems that are observable and easy to debug in
-                production.
+                As a <span className="text-white">Senior Engineer</span>, I
+                believe in leading by example. I advocate for clean code,
+                comprehensive testing, and building systems that are observable
+                and easy to debug in production.
               </p>
             </div>
           </div>
 
-          {/* Stats / Highlights */}
+          {}
           <div className="grid grid-cols-2 gap-4">
             {[
               { label: "Experience", val: experienceYears },
@@ -368,20 +392,22 @@ const About = () => {
             ].map((stat, i) => (
               <div
                 key={i}
-                className={`${styles['glass-panel']} p-8 flex flex-col items-center justify-center text-center group hover:border-cyan-500/30 transition-colors`}
+                className={`${styles["glass-panel"]} p-8 flex flex-col items-center justify-center text-center group hover:border-cyan-500/30 transition-colors`}
               >
                 <div className="text-2xl md:text-3xl font-display font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">
                   {stat.val}
                 </div>
-                <div className="text-xs font-mono text-slate-500 uppercase tracking-widest">{stat.label}</div>
+                <div className="text-xs font-mono text-slate-500 uppercase tracking-widest">
+                  {stat.label}
+                </div>
               </div>
             ))}
           </div>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
 const BentoGrid = () => {
   const features = [
@@ -417,12 +443,14 @@ const BentoGrid = () => {
       col: "md:col-span-3",
       row: "row-span-1",
     },
-  ]
+  ];
 
   return (
     <section id="skills" className="py-32 px-6 md:px-20 relative z-10">
       <div className="mb-16 max-w-6xl mx-auto">
-        <h2 className="font-display text-5xl md:text-7xl font-bold text-white mb-4">TECHNICAL ARSENAL</h2>
+        <h2 className="font-display text-5xl md:text-7xl font-bold text-white mb-4">
+          TECHNICAL ARSENAL
+        </h2>
         <div className="h-1 w-20 bg-cyan-500" />
       </div>
 
@@ -434,15 +462,19 @@ const BentoGrid = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
-            className={`${styles['glass-panel']} p-8 rounded-none relative overflow-hidden group ${f.col} ${f.row} ${styles['neon-border']} transition-all duration-300`}
+            className={`${styles["glass-panel"]} p-8 rounded-none relative overflow-hidden group ${f.col} ${f.row} ${styles["neon-border"]} transition-all duration-300`}
           >
             <div className="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-100 transition-opacity">
               {f.icon}
             </div>
             <div className="h-full flex flex-col justify-between">
               <div>
-                <h3 className="font-display text-xl font-bold text-white mb-2">{f.title}</h3>
-                <p className="font-mono text-xs text-slate-400 mb-6">{f.desc}</p>
+                <h3 className="font-display text-xl font-bold text-white mb-2">
+                  {f.title}
+                </h3>
+                <p className="font-mono text-xs text-slate-400 mb-6">
+                  {f.desc}
+                </p>
               </div>
               <div className="flex flex-wrap gap-2">
                 {f.tech.map((t) => (
@@ -460,8 +492,8 @@ const BentoGrid = () => {
         ))}
       </div>
     </section>
-  )
-}
+  );
+};
 
 const ExperienceTimeline = () => {
   const experiences = [
@@ -504,16 +536,23 @@ const ExperienceTimeline = () => {
       stack: ["Java", "ReactJS", "WebSocket", "IoT"],
       highlight: false,
     },
-  ]
+  ];
 
   return (
-    <section id="career" className="py-32 px-6 md:px-20 relative z-10 bg-[#040406]">
+    <section
+      id="career"
+      className="py-32 px-6 md:px-20 relative z-10 bg-[#040406]"
+    >
       <div className="max-w-4xl mx-auto">
-        <h2 className="font-display text-5xl md:text-7xl font-bold text-white mb-16 text-center">CAREER TRAJECTORY</h2>
+        <h2 className="font-display text-5xl md:text-7xl font-bold text-white mb-16 text-center">
+          CAREER TRAJECTORY
+        </h2>
 
         <div className="relative">
-          {/* Vertical Line */}
-          <div className={`absolute left-[19px] md:left-1/2 top-0 bottom-0 w-px ${styles['timeline-line']} transform md:-translate-x-1/2`} />
+          {}
+          <div
+            className={`absolute left-[19px] md:left-1/2 top-0 bottom-0 w-px ${styles["timeline-line"]} transform md:-translate-x-1/2`}
+          />
 
           <div className="space-y-16">
             {experiences.map((exp, i) => (
@@ -524,7 +563,7 @@ const ExperienceTimeline = () => {
                 viewport={{ once: true }}
                 className={`relative flex flex-col md:flex-row gap-8 ${i % 2 === 0 ? "md:flex-row-reverse" : ""}`}
               >
-                {/* Dot */}
+                {}
                 <div className="absolute left-0 md:left-1/2 w-10 h-10 flex items-center justify-center transform md:-translate-x-1/2 z-10">
                   <div
                     className={`w-4 h-4 rounded-full ${
@@ -535,17 +574,25 @@ const ExperienceTimeline = () => {
                   />
                 </div>
 
-                {/* Content */}
+                {}
                 <div className="ml-12 md:ml-0 md:w-1/2 pl-4 md:pl-0 md:pr-12 md:text-right group">
                   <div
-                    className={`${styles['glass-panel']} p-6 hover:border-cyan-500/30 transition-colors ${
+                    className={`${styles["glass-panel"]} p-6 hover:border-cyan-500/30 transition-colors ${
                       i % 2 !== 0 ? "md:text-left md:ml-12 md:pr-0 md:pl-6" : ""
                     }`}
                   >
-                    <div className="font-mono text-cyan-400 text-xs mb-2">{exp.period}</div>
-                    <h3 className="font-display text-2xl font-bold text-white mb-1">{exp.role}</h3>
-                    <div className="font-mono text-sm text-slate-400 mb-4">{exp.company}</div>
-                    <p className="text-slate-300 text-base leading-relaxed mb-4">{exp.desc}</p>
+                    <div className="font-mono text-cyan-400 text-xs mb-2">
+                      {exp.period}
+                    </div>
+                    <h3 className="font-display text-2xl font-bold text-white mb-1">
+                      {exp.role}
+                    </h3>
+                    <div className="font-mono text-sm text-slate-400 mb-4">
+                      {exp.company}
+                    </div>
+                    <p className="text-slate-300 text-base leading-relaxed mb-4">
+                      {exp.desc}
+                    </p>
                     <ul
                       className={`text-[11px] text-slate-500 font-mono space-y-1 mb-4 ${
                         i % 2 === 0 ? "items-end" : "items-start"
@@ -553,13 +600,19 @@ const ExperienceTimeline = () => {
                     >
                       {exp.responsibilities.map((res, idx) => (
                         <li key={idx} className="flex items-center gap-2">
-                          {i % 2 !== 0 && <ChevronRight size={10} className="text-cyan-500" />}
+                          {i % 2 !== 0 && (
+                            <ChevronRight size={10} className="text-cyan-500" />
+                          )}
                           {res}
-                          {i % 2 === 0 && <ChevronRight size={10} className="text-cyan-500" />}
+                          {i % 2 === 0 && (
+                            <ChevronRight size={10} className="text-cyan-500" />
+                          )}
                         </li>
                       ))}
                     </ul>
-                    <div className={`flex flex-wrap gap-2 ${i % 2 === 0 ? "md:justify-end" : ""}`}>
+                    <div
+                      className={`flex flex-wrap gap-2 ${i % 2 === 0 ? "md:justify-end" : ""}`}
+                    >
                       {exp.stack.map((s) => (
                         <span
                           key={s}
@@ -571,7 +624,7 @@ const ExperienceTimeline = () => {
                     </div>
                   </div>
                 </div>
-                {/* Spacer for opposite side */}
+                {}
                 <div className="hidden md:block md:w-1/2" />
               </motion.div>
             ))}
@@ -579,24 +632,30 @@ const ExperienceTimeline = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
 const Education = () => (
   <section className="py-20 px-6 md:px-20 relative z-10 border-t border-white/5">
     <div className="max-w-4xl mx-auto text-center">
       <div className="inline-flex items-center gap-2 text-cyan-400 mb-6">
         <GraduationCap size={24} />
-        <span className="font-mono text-sm tracking-widest uppercase">Education</span>
+        <span className="font-mono text-sm tracking-widest uppercase">
+          Education
+        </span>
       </div>
-      <h3 className="font-display text-3xl font-bold text-white mb-2">Bachelor of Information Technology</h3>
-      <div className="font-mono text-xl text-slate-400 mb-4">SECTEC Institute</div>
+      <h3 className="font-display text-3xl font-bold text-white mb-2">
+        Bachelor of Information Technology
+      </h3>
+      <div className="font-mono text-xl text-slate-400 mb-4">
+        SECTEC Institute
+      </div>
       <div className="inline-block px-4 py-1 border border-white/10 rounded-full text-xs font-mono text-slate-500">
         2018 – 2022
       </div>
     </div>
   </section>
-)
+);
 
 interface Project {
   title: string;
@@ -616,7 +675,7 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = ({ project, index }: ProjectCardProps) => {
-  const [isHovered, setIsHovered] = useState(false)
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <motion.div
@@ -631,7 +690,9 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
       <div className="flex flex-col md:flex-row gap-8 md:items-start justify-between">
         <div className="flex-1">
           <div className="flex items-baseline gap-4 mb-4">
-            <span className="font-mono text-cyan-400 text-sm">0{index + 1}</span>
+            <span className="font-mono text-cyan-400 text-sm">
+              0{index + 1}
+            </span>
             <h3 className="font-display text-4xl md:text-6xl font-bold text-white group-hover:text-cyan-400 transition-colors">
               {project.title}
             </h3>
@@ -639,12 +700,20 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
             <div>
-              <div className="text-xs font-mono text-slate-500 mb-1">[ CONSTRAINT ]</div>
-              <p className="font-mono text-slate-300 text-base leading-relaxed">{project.problem}</p>
+              <div className="text-xs font-mono text-slate-500 mb-1">
+                [ CONSTRAINT ]
+              </div>
+              <p className="font-mono text-slate-300 text-base leading-relaxed">
+                {project.problem}
+              </p>
             </div>
             <div>
-              <div className="text-xs font-mono text-cyan-500 mb-1">[ IMPLEMENTATION ]</div>
-              <p className="font-mono text-slate-200 text-base leading-relaxed">{project.solution}</p>
+              <div className="text-xs font-mono text-cyan-500 mb-1">
+                [ IMPLEMENTATION ]
+              </div>
+              <p className="font-mono text-slate-200 text-base leading-relaxed">
+                {project.solution}
+              </p>
             </div>
           </div>
 
@@ -660,7 +729,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
           </div>
         </div>
 
-        {/* Interactive Architecture View */}
+        {}
         <div className="w-full md:w-1/3 relative h-48 md:h-52 bg-black/50 border border-white/10 overflow-hidden">
           <AnimatePresence mode="wait">
             {!isHovered ? (
@@ -673,12 +742,20 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
               >
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <div className="text-xs text-slate-500 font-mono uppercase">Scale</div>
-                    <div className="text-sm text-white font-display">{project.metrics.scope}</div>
+                    <div className="text-xs text-slate-500 font-mono uppercase">
+                      Scale
+                    </div>
+                    <div className="text-sm text-white font-display">
+                      {project.metrics.scope}
+                    </div>
                   </div>
                   <div>
-                    <div className="text-xs text-slate-500 font-mono uppercase">Value</div>
-                    <div className="text-sm text-white font-display">{project.metrics.impact}</div>
+                    <div className="text-xs text-slate-500 font-mono uppercase">
+                      Value
+                    </div>
+                    <div className="text-sm text-white font-display">
+                      {project.metrics.impact}
+                    </div>
                   </div>
                 </div>
                 <div className="mt-4 flex items-center gap-2 text-xs text-cyan-400 font-mono">
@@ -694,7 +771,9 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                 exit={{ opacity: 0, y: -20 }}
                 className="absolute inset-0 p-6 bg-cyan-950/30 backdrop-blur-sm flex flex-col gap-2 justify-center"
               >
-                <div className="text-xs text-cyan-400 font-bold mb-2 font-mono">[ ARCHITECTURE LAYERS ]</div>
+                <div className="text-xs text-cyan-400 font-bold mb-2 font-mono">
+                  [ ARCHITECTURE LAYERS ]
+                </div>
                 {project.arch.map((layer, i) => (
                   <div
                     key={i}
@@ -710,8 +789,8 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
         </div>
       </div>
     </motion.div>
-  )
-}
+  );
+};
 
 const Projects = () => {
   const projects = [
@@ -723,7 +802,12 @@ const Projects = () => {
         "Decomposed core into 15+ Domain-Driven microservices (Spring Boot/NestJS). Implemented Saga pattern for distributed transactions and Kong Gateway for traffic orchestration.",
       tags: ["Distributed Systems", "Kafka", "Spring Boot 3", "Kong Gateway"],
       metrics: { scope: "Super App Core", impact: "Zero-Downtime Deploy" },
-      arch: ["API Gateway (Kong)", "Event Bus (Kafka)", "Domain Services (Spring)", "Sharded PostgreSQL"],
+      arch: [
+        "API Gateway (Kong)",
+        "Event Bus (Kafka)",
+        "Domain Services (Spring)",
+        "Sharded PostgreSQL",
+      ],
     },
     {
       title: "Identity Trust Engine",
@@ -733,7 +817,12 @@ const Projects = () => {
         "Re-engineered the verification pipeline using GoLang for concurrency. Integrated async biometric validation to reduce user-perceived latency to <400ms.",
       tags: ["High Performance", "GoLang", "Security", "NuxtJS"],
       metrics: { scope: "Global Users", impact: "400ms Latency" },
-      arch: ["Edge Firewall", "Concurrency Engine (Go)", "Async Bio-Auth", "Audit Logger"],
+      arch: [
+        "Edge Firewall",
+        "Concurrency Engine (Go)",
+        "Async Bio-Auth",
+        "Audit Logger",
+      ],
     },
     {
       title: "IoT Fleet Command",
@@ -743,7 +832,12 @@ const Projects = () => {
         "Built a persistent WebSocket mesh network to handle bidirectional telemetry. Implemented efficient geofencing algorithms for real-time alerts.",
       tags: ["IoT", "Real-time", "WebSockets", "React"],
       metrics: { scope: "Fleet Mgmt", impact: "Real-time Sync" },
-      arch: ["React Client", "WS Load Balancer", "Telemetry Ingest", "Time-Series DB"],
+      arch: [
+        "React Client",
+        "WS Load Balancer",
+        "Telemetry Ingest",
+        "Time-Series DB",
+      ],
     },
     {
       title: "Secure Health EMR",
@@ -753,20 +847,34 @@ const Projects = () => {
         "Designed a centralized, multi-tenant EMR system with strict RBAC and encrypted API tunnels for secure inter-hospital data sync.",
       tags: ["Healthcare", "Compliance", "RBAC", "Security"],
       metrics: { scope: "10+ Hospitals", impact: "Data Integrity" },
-      arch: ["Secure API Layer", "Role-Based Auth", "Encrypted Store", "Audit Trails"],
+      arch: [
+        "Secure API Layer",
+        "Role-Based Auth",
+        "Encrypted Store",
+        "Audit Trails",
+      ],
     },
-  ]
+  ];
 
   return (
-    <section id="projects" className="py-32 px-6 md:px-20 relative bg-[#050507]">
+    <section
+      id="projects"
+      className="py-32 px-6 md:px-20 relative bg-[#050507]"
+    >
       <div className="max-w-6xl mx-auto">
         <div className="mb-20 flex items-end justify-between">
           <div>
-            <h2 className="font-display text-5xl md:text-7xl font-bold text-white">SELECTED WORKS</h2>
-            <p className="font-mono text-slate-500 mt-4">A curated selection of engineering challenges.</p>
+            <h2 className="font-display text-5xl md:text-7xl font-bold text-white">
+              SELECTED WORKS
+            </h2>
+            <p className="font-mono text-slate-500 mt-4">
+              A curated selection of engineering challenges.
+            </p>
           </div>
           <div className="hidden md:block text-right">
-            <div className="text-xs font-mono text-slate-400">PROJECT_COUNT</div>
+            <div className="text-xs font-mono text-slate-400">
+              PROJECT_COUNT
+            </div>
             <div className="text-4xl font-display text-slate-500">04</div>
           </div>
         </div>
@@ -778,12 +886,15 @@ const Projects = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
 const Approach = () => {
   return (
-    <section id="process" className="py-32 px-6 md:px-20 relative z-10 border-t border-white/5">
+    <section
+      id="process"
+      className="py-32 px-6 md:px-20 relative z-10 border-t border-white/5"
+    >
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
         <div>
           <h2 className="font-display text-5xl md:text-6xl font-bold text-white mb-8">
@@ -792,43 +903,60 @@ const Approach = () => {
           </h2>
           <div className="space-y-8 font-mono text-sm text-slate-400">
             <p>
-              In the fast-paced world of fintech, reliability is currency. My engineering philosophy centers on{" "}
-              <span className="text-white">Predictability</span> and <span className="text-white">Observability</span>.
+              In the fast-paced world of fintech, reliability is currency. My
+              engineering philosophy centers on{" "}
+              <span className="text-white">Predictability</span> and{" "}
+              <span className="text-white">Observability</span>.
             </p>
             <p>
-              I prefer <span className="text-white">boring technology</span> that scales over shiny new tools. I design
-              systems that scream when they are in pain, allowing for proactive resolution before customers ever notice
-              a degradation in service.
+              I prefer <span className="text-white">boring technology</span>{" "}
+              that scales over shiny new tools. I design systems that scream
+              when they are in pain, allowing for proactive resolution before
+              customers ever notice a degradation in service.
             </p>
           </div>
         </div>
 
         <div className="relative">
           <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 blur-2xl" />
-          <div className={`${styles['glass-panel']} p-8 relative`}>
+          <div className={`${styles["glass-panel"]} p-8 relative`}>
             <div className="flex items-center justify-between mb-8 border-b border-white/10 pb-4">
-              <span className="font-mono text-xs text-slate-400">DECISION_MATRIX</span>
+              <span className="font-mono text-xs text-slate-400">
+                DECISION_MATRIX
+              </span>
               <Layers className="text-slate-400" size={16} />
             </div>
 
             <div className="space-y-6">
               <div className="flex justify-between items-center opacity-50">
-                <span className="font-mono text-sm text-slate-400">Architecture</span>
+                <span className="font-mono text-sm text-slate-400">
+                  Architecture
+                </span>
                 <span className="text-red-900/50 text-xs">Tight Coupling</span>
               </div>
               <div className="h-px bg-white/10" />
               <div className="flex justify-between items-center">
-                <span className="font-display font-bold text-white">My Approach</span>
-                <span className="text-cyan-400 text-xs font-mono bg-cyan-950/30 px-2 py-1">Event-Driven & Modular</span>
+                <span className="font-display font-bold text-white">
+                  My Approach
+                </span>
+                <span className="text-cyan-400 text-xs font-mono bg-cyan-950/30 px-2 py-1">
+                  Event-Driven & Modular
+                </span>
               </div>
 
               <div className="flex justify-between items-center opacity-50 mt-6">
-                <span className="font-mono text-sm text-slate-400">Deployment</span>
-                <span className="text-red-900/50 text-xs">Manual / Risk-Prone</span>
+                <span className="font-mono text-sm text-slate-400">
+                  Deployment
+                </span>
+                <span className="text-red-900/50 text-xs">
+                  Manual / Risk-Prone
+                </span>
               </div>
               <div className="h-px bg-white/10" />
               <div className="flex justify-between items-center">
-                <span className="font-display font-bold text-white">Strategy</span>
+                <span className="font-display font-bold text-white">
+                  Strategy
+                </span>
                 <span className="text-purple-400 text-xs font-mono bg-purple-950/30 px-2 py-1">
                   Automated / Blue-Green
                 </span>
@@ -838,8 +966,8 @@ const Approach = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
 const Footer = () => {
   return (
@@ -850,14 +978,16 @@ const Footer = () => {
           transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
           className="font-display text-[10rem] font-bold text-white leading-none"
         >
-          RESILIENCE CONSISTENCY SCALABILITY ARCHITECTURE RESILIENCE CONSISTENCY SCALABILITY ARCHITECTURE
+          RESILIENCE CONSISTENCY SCALABILITY ARCHITECTURE RESILIENCE CONSISTENCY
+          SCALABILITY ARCHITECTURE
         </motion.div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 relative z-10">
         <div>
           <h3 className="font-display text-4xl font-bold text-white mb-6">
-            LET'S BUILD <br /> SOMETHING <span className="text-cyan-400">ROBUST</span>
+            LET'S BUILD <br /> SOMETHING{" "}
+            <span className="text-cyan-400">ROBUST</span>
           </h3>
           <div className="flex flex-col gap-4">
             <a
@@ -883,7 +1013,9 @@ const Footer = () => {
         </div>
 
         <div className="flex flex-col md:items-end justify-end">
-          <div className="font-mono text-slate-400 text-xs mb-2">CURRENT_STATUS</div>
+          <div className="font-mono text-slate-400 text-xs mb-2">
+            CURRENT_STATUS
+          </div>
           <div className="flex items-center gap-2 text-green-500 font-mono text-sm">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -897,18 +1029,20 @@ const Footer = () => {
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
 const Template1 = () => {
   return (
-    <div className={`${styles.template1Container} ${styles.template1Scrollbar}`}>
-      {/* Background Shader Canvas - Now running on native WebGL */}
+    <div
+      className={`${styles.template1Container} ${styles.template1Scrollbar}`}
+    >
+      {}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <NativeShaderCanvas />
       </div>
 
-      {/* Main Content */}
+      {}
       <main className="relative z-10">
         <Navbar />
         <Hero />
@@ -921,7 +1055,7 @@ const Template1 = () => {
         <Footer />
       </main>
 
-      {/* Vignette & Noise Overlays */}
+      {}
       <div className="fixed inset-0 z-20 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,#000000_100%)] opacity-20" />
       <div
         className="fixed inset-0 z-20 pointer-events-none opacity-[0.01] mix-blend-overlay bg-repeat"
@@ -930,7 +1064,7 @@ const Template1 = () => {
         }}
       />
     </div>
-  )
-}
+  );
+};
 
-export default Template1
+export default Template1;

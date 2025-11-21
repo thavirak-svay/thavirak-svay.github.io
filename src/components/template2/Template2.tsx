@@ -33,29 +33,9 @@ import clsx from "clsx";
 
 import { twMerge } from "tailwind-merge";
 
-/**
-
- * ------------------------------------------------------------------
-
- * UTILS
-
- * ------------------------------------------------------------------
-
- */
-
 function cn(...inputs: any[]) {
   return twMerge(clsx(inputs));
 }
-
-/**
-
- * ------------------------------------------------------------------
-
- * CONFIGURATION & DATA
-
- * ------------------------------------------------------------------
-
- */
 
 const SKILLS = [
   {
@@ -192,16 +172,6 @@ const EXPERIENCE = [
   },
 ];
 
-/**
-
- * ------------------------------------------------------------------
-
- * SHADER (LIQUID SILVER)
-
- * ------------------------------------------------------------------
-
- */
-
 const vertexShader = `
 
 varying vec2 vUv;
@@ -228,7 +198,6 @@ varying vec2 vUv;
 
 
 
-// Simplex noise
 
 vec3 permute(vec3 x) { return mod(((x*34.0)+1.0)*x, 289.0); }
 
@@ -298,7 +267,6 @@ void main() {
 
 
 
-  // Flowing "Liquid Metal"
 
   float noiseVal = snoise(vec2(st.x * 1.5, st.y * 1.5 - uTime * 0.15));
 
@@ -306,29 +274,26 @@ void main() {
 
 
 
-  // Sharp thin lines for "expensive" feel
 
   line = smoothstep(0.95, 1.0, line);
 
 
 
-  // Monochrome/Silver Palette
 
-  vec3 bgColor = vec3(0.02, 0.02, 0.02); // Deep Obsidian
+  vec3 bgColor = vec3(0.02, 0.02, 0.02); 
 
-  vec3 lineColor = vec3(0.6, 0.6, 0.7); // Silver/Steel
+  vec3 lineColor = vec3(0.6, 0.6, 0.7); 
 
 
 
   vec3 color = bgColor;
 
-  color += lineColor * line * 0.15; // Subtle lines
+  color += lineColor * line * 0.15; 
 
-  color += vec3(0.8, 0.8, 1.0) * mouseFactor * 0.15; // Cool white mouse glow
+  color += vec3(0.8, 0.8, 1.0) * mouseFactor * 0.15; 
 
 
 
-  // Noise Grain
 
   float grain = fract(sin(dot(vUv, vec2(12.9898, 78.233)*uTime)) * 43758.5453);
 
@@ -336,7 +301,6 @@ void main() {
 
 
 
-  // Vignette
 
   float vig = 1.0 - length(vUv - 0.5);
 
@@ -407,7 +371,7 @@ const VanillaBackgroundShader = () => {
 
       const targetMouse = new THREE.Vector2(
         mouseRef.current.x,
-        mouseRef.current.y,
+        mouseRef.current.y
       );
 
       currentMouse.lerp(targetMouse, 0.05);
@@ -468,23 +432,11 @@ const VanillaBackgroundShader = () => {
   );
 };
 
-/**
-
- * ------------------------------------------------------------------
-
- * UI COMPONENTS
-
- * ------------------------------------------------------------------
-
- */
-
-// Technical corner marker component for "expensive" look
-
 const TechMarker = ({ className }: { className?: string }) => (
   <div
     className={cn(
       "absolute w-3 h-3 border-t border-l border-white/30 opacity-50",
-      className,
+      className
     )}
   />
 );
@@ -534,7 +486,7 @@ const Hero = () => {
       id="about"
       className="relative min-h-screen flex items-center pt-20 overflow-hidden"
     >
-      {/* Vertical Grid Lines */}
+      {}
 
       <div className="absolute inset-0 pointer-events-none flex justify-center w-full max-w-7xl mx-auto opacity-[0.03]">
         <div className="w-px h-full bg-white mx-auto" />
@@ -642,7 +594,7 @@ const SkillsDashboard = () => {
               className={cn(
                 "group relative p-8 bg-[#0A0A0A] border border-white/[0.08] overflow-hidden transition-all duration-500 hover:bg-white/[0.02]",
 
-                skill.col,
+                skill.col
               )}
             >
               <TechMarker className="top-0 left-0" />
@@ -653,7 +605,7 @@ const SkillsDashboard = () => {
 
               <TechMarker className="bottom-0 right-0 rotate-180" />
 
-              {/* Hover "Scan" Effect */}
+              {}
 
               <div className="absolute inset-0 bg-gradient-to-b from-white/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
@@ -708,7 +660,7 @@ const ProjectRow = ({ project }: { project: Project }) => {
       className="group relative border-t border-white/10 py-12 cursor-none md:cursor-pointer transition-colors hover:bg-white/[0.02]"
     >
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-        {/* ID & Category */}
+        {}
 
         <div className="md:col-span-3 font-mono text-xs text-white/40 flex flex-col gap-2">
           <span>
@@ -718,7 +670,7 @@ const ProjectRow = ({ project }: { project: Project }) => {
           <span className="text-white/60">{project.category}</span>
         </div>
 
-        {/* Title */}
+        {}
 
         <div className="md:col-span-5">
           <h3 className="font-display text-4xl md:text-5xl text-white group-hover:translate-x-4 transition-transform duration-500 ease-out">
@@ -726,17 +678,17 @@ const ProjectRow = ({ project }: { project: Project }) => {
           </h3>
         </div>
 
-        {/* Tech Stack (Visible on Hover/Mobile) */}
+        {}
 
         <div className="md:col-span-4 md:text-right">
           <div className="flex flex-col md:items-end gap-4">
-            {/* Description Reveal */}
+            {}
 
             <div
               className={cn(
                 "overflow-hidden transition-all duration-500 ease-in-out max-h-0 opacity-0",
 
-                isHovered ? "max-h-24 opacity-100" : "",
+                isHovered ? "max-h-24 opacity-100" : ""
               )}
             >
               <p className="font-mono text-xs text-white/60 max-w-xs ml-auto">
@@ -903,16 +855,6 @@ const Footer = () => {
   );
 };
 
-/**
-
- * ------------------------------------------------------------------
-
- * MAIN COMPONENT
-
- * ------------------------------------------------------------------
-
- */
-
 import styles from "./Template2.module.css";
 
 export default function Template2() {
@@ -920,7 +862,7 @@ export default function Template2() {
     <div
       className={`${styles.template2Container} ${styles.template2Scrollbar}`}
     >
-      {/* Film Grain Overlay */}
+      {}
 
       <div
         className="fixed inset-0 z-50 pointer-events-none opacity-[0.03] mix-blend-overlay"

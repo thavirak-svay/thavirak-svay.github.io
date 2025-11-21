@@ -1,24 +1,25 @@
-"use client"
+"use client";
 
-import { Suspense } from "react"
-import { useSearchParams } from "next/navigation"
-import Template1 from "@/components/template1/Template1"
-import Template2 from "@/components/template2/Template2"
-import Template3 from "@/components/template3/Template3"
+import { Suspense } from "react";
+import { useSearchParams } from "next/navigation";
+import Template1 from "@/components/template1/Template1";
+import Template2 from "@/components/template2/Template2";
+import Template3 from "@/components/template3/Template3";
 
 const templates = {
   "1": Template1,
   "2": Template2,
   "3": Template3,
-}
+};
 
 function HomeContent() {
-  const searchParams = useSearchParams()
-  const template = searchParams.get("template")
+  const searchParams = useSearchParams();
+  const template = searchParams.get("template");
 
-  const TemplateComponent = templates[template as keyof typeof templates] || Template1
+  const TemplateComponent =
+    templates[template as keyof typeof templates] || Template1;
 
-  return <TemplateComponent />
+  return <TemplateComponent />;
 }
 
 export default function Home() {
@@ -26,5 +27,5 @@ export default function Home() {
     <Suspense fallback={<Template1 />}>
       <HomeContent />
     </Suspense>
-  )
+  );
 }
