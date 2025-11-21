@@ -392,7 +392,7 @@ const About = () => {
             ].map((stat, i) => (
               <div
                 key={i}
-                className={`${styles["glass-panel"]} p-8 flex flex-col items-center justify-center text-center group hover:border-cyan-500/30 transition-colors`}
+                className={`${styles.template1GlassPanel} p-8 flex flex-col items-center justify-center text-center group hover:border-cyan-500/30 transition-colors`}
               >
                 <div className="text-2xl md:text-3xl font-display font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">
                   {stat.val}
@@ -462,7 +462,7 @@ const BentoGrid = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
-            className={`${styles["glass-panel"]} p-8 rounded-none relative overflow-hidden group ${f.col} ${f.row} ${styles["neon-border"]} transition-all duration-300`}
+            className={`${styles.template1GlassPanel} p-8 rounded-none relative overflow-hidden group ${f.col} ${f.row} ${styles.template1NeonBorder} transition-all duration-300`}
           >
             <div className="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-100 transition-opacity">
               {f.icon}
@@ -551,7 +551,7 @@ const ExperienceTimeline = () => {
         <div className="relative">
           {}
           <div
-            className={`absolute left-[19px] md:left-1/2 top-0 bottom-0 w-1 ${styles["timeline-line"]} transform md:-translate-x-1/2`}
+            className={`absolute left-[19px] md:left-1/2 top-0 bottom-0 w-1 ${styles.template1TimelineLine} transform md:-translate-x-1/2`}
           />
 
           <div className="space-y-16">
@@ -577,7 +577,7 @@ const ExperienceTimeline = () => {
                 {}
                 <div className="ml-12 md:ml-0 md:w-1/2 pl-4 md:pl-0 md:pr-12 md:text-right group">
                   <div
-                    className={`${styles["glass-panel"]} p-6 hover:border-cyan-500/30 transition-colors ${
+                    className={`${styles.template1GlassPanel} p-6 hover:border-cyan-500/30 transition-colors ${
                       i % 2 !== 0 ? "md:text-left md:ml-12 md:pr-0 md:pl-6" : ""
                     }`}
                   >
@@ -919,7 +919,7 @@ const Approach = () => {
 
         <div className="relative">
           <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 blur-2xl" />
-          <div className={`${styles["glass-panel"]} p-8 relative`}>
+          <div className={`${styles.template1GlassPanel} p-8 relative`}>
             <div className="flex items-center justify-between mb-8 border-b border-white/10 pb-4">
               <span className="font-mono text-xs text-slate-400">
                 DECISION_MATRIX

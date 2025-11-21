@@ -227,7 +227,7 @@ const MagneticButton = ({
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onClick={onClick}
-      className={`relative overflow-hidden group rounded-none border border-blue-500/30 px-6 py-3 bg-blue-900/10 hover:bg-blue-500/10 transition-colors ${styles.fontMono} ${className}`}
+      className={`relative overflow-hidden group rounded-none border border-blue-500/30 px-6 py-3 bg-blue-900/10 hover:bg-blue-500/10 transition-colors ${styles.template3FontMono} ${className}`}
     >
       <span className="relative z-10 text-sm font-bold tracking-wider uppercase flex items-center gap-2">
         {children}
@@ -253,7 +253,7 @@ const SectionTitle = ({
     >
       <div className="h-[1px] w-8 bg-blue-500" />
       <span
-        className={`${styles.fontMono} text-blue-400 text-sm uppercase tracking-widest`}
+        className={`${styles.template3FontMono} text-blue-400 text-sm uppercase tracking-widest`}
       >
         {subtitle}
       </span>
@@ -263,7 +263,7 @@ const SectionTitle = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: 0.1 }}
-      className={`${styles.fontGrotesk} text-4xl md:text-5xl font-bold text-white`}
+      className={`${styles.template3FontGrotesk} text-4xl md:text-5xl font-bold text-white`}
     >
       {title}
       <span className="text-blue-500">.</span>
@@ -290,14 +290,14 @@ const BentoCard = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay }}
-      className={`${styles.glassPanel} p-6 md:p-8 relative overflow-hidden group hover:border-blue-500/30 transition-colors ${className}`}
+      className={`${styles.template3GlassPanel} p-6 md:p-8 relative overflow-hidden group hover:border-blue-500/30 transition-colors ${className}`}
     >
       <div className="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-40 transition-opacity">
         <Icon size={48} strokeWidth={1} />
       </div>
       <div className="relative z-10">
         <h3
-          className={`${styles.fontGrotesk} text-xl font-bold mb-4 text-white group-hover:text-blue-400 transition-colors`}
+          className={`${styles.template3FontGrotesk} text-xl font-bold mb-4 text-white group-hover:text-blue-400 transition-colors`}
         >
           {title}
         </h3>
@@ -305,7 +305,7 @@ const BentoCard = ({
           {items.map((item, i) => (
             <span
               key={i}
-              className={`px-3 py-1 text-xs ${styles.fontMono} bg-white/5 border border-white/10 rounded-sm text-gray-300 group-hover:border-blue-500/20 group-hover:text-blue-200 transition-all`}
+              className={`px-3 py-1 text-xs ${styles.template3FontMono} bg-white/5 border border-white/10 rounded-sm text-gray-300 group-hover:border-blue-500/20 group-hover:text-blue-200 transition-all`}
             >
               {item}
             </span>
@@ -334,23 +334,23 @@ const ProjectCard = ({
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className={`${styles.glassPanel} border-l-4 border-l-blue-500/50 hover:border-l-blue-500 transition-all p-6 md:p-8 group`}
+      className={`${styles.template3GlassPanel} border-t border-white/10 border-l-4 border-l-blue-500/50 hover:border-l-blue-500 transition-all p-6 md:p-8 group`}
     >
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
         <div>
           <div className="flex items-center gap-3 mb-2">
             <span
-              className={`px-2 py-0.5 bg-blue-500/20 text-blue-300 text-xs ${styles.fontMono} uppercase rounded-sm border border-blue-500/30`}
+              className={`px-2 py-0.5 bg-blue-500/20 text-blue-300 text-xs ${styles.template3FontMono} uppercase rounded-sm border border-blue-500/30`}
             >
               {type}
             </span>
             <span
-              className={`flex items-center gap-1 text-xs text-gray-500 ${styles.fontMono}`}
+              className={`flex items-center gap-1 text-xs text-gray-500 ${styles.template3FontMono}`}
             >
               <GitBranch size={12} /> main
             </span>
           </div>
-          <h3 className={`${styles.fontGrotesk} text-2xl font-bold text-white`}>
+          <h3 className={`${styles.template3FontGrotesk} text-2xl font-bold text-white`}>
             {title}
           </h3>
         </div>
@@ -374,7 +374,7 @@ const ProjectCard = ({
             {stack.map((tech) => (
               <span
                 key={tech}
-                className={`text-xs ${styles.fontMono} text-blue-200/70`}
+                className={`text-xs ${styles.template3FontMono} text-blue-200/70`}
               >
                 #{tech}
               </span>
@@ -383,7 +383,7 @@ const ProjectCard = ({
         </div>
         <div className="bg-black/40 p-4 rounded border border-white/5">
           <h4
-            className={`text-xs ${styles.fontMono} uppercase text-gray-500 mb-3 border-b border-white/10 pb-2`}
+            className={`text-xs ${styles.template3FontMono} uppercase text-gray-500 mb-3 border-b border-white/10 pb-2`}
           >
             Key Impact
           </h4>
@@ -391,7 +391,7 @@ const ProjectCard = ({
             {metrics.map((m, i) => (
               <li key={i} className="flex justify-between items-center text-sm">
                 <span className="text-gray-400">{m.label}</span>
-                <span className={`text-green-400 ${styles.fontMono}`}>
+                <span className={`text-green-400 ${styles.template3FontMono}`}>
                   {m.value}
                 </span>
               </li>
@@ -399,7 +399,7 @@ const ProjectCard = ({
           </ul>
           <div className="mt-4 pt-3 border-t border-white/5 text-center">
             <button
-              className={`text-xs ${styles.fontMono} text-blue-400 hover:text-blue-300 flex items-center justify-center gap-1 w-full group/btn`}
+              className={`text-xs ${styles.template3FontMono} text-blue-400 hover:text-blue-300 flex items-center justify-center gap-1 w-full group/btn`}
             >
               View Architecture{" "}
               <ChevronRight
@@ -442,7 +442,7 @@ export default function Template3() {
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 bg-blue-500 animate-pulse rounded-full shadow-[0_0_10px_#3B82F6]" />
             <span
-              className={`${styles.fontGrotesk} font-bold text-xl tracking-tight text-white`}
+              className={`${styles.template3FontGrotesk} font-bold text-xl tracking-tight text-white`}
             >
               THAVIRAK<span className="text-gray-500">.SVAY</span>
             </span>
@@ -453,14 +453,14 @@ export default function Template3() {
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className={`text-sm ${styles.fontMono} text-gray-400 hover:text-white transition-colors uppercase tracking-widest`}
+                className={`text-sm ${styles.template3FontMono} text-gray-400 hover:text-white transition-colors uppercase tracking-widest`}
               >
                 {item}
               </a>
             ))}
             <a
               href="#"
-              className={`px-4 py-2 bg-white/5 border border-white/10 hover:bg-white/10 text-xs ${styles.fontMono} text-blue-400 transition-all rounded`}
+              className={`px-4 py-2 bg-white/5 border border-white/10 hover:bg-white/10 text-xs ${styles.template3FontMono} text-blue-400 transition-all rounded`}
             >
               RESUME.PDF
             </a>
@@ -483,7 +483,7 @@ export default function Template3() {
                 className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-500/20 bg-blue-500/5"
               >
                 <Activity size={14} className="text-blue-400" />
-                <span className={`text-xs ${styles.fontMono} text-blue-300`}>
+                <span className={`text-xs ${styles.template3FontMono} text-blue-300`}>
                   System Status: AVAILABLE FOR HIRE
                 </span>
               </motion.div>
@@ -493,7 +493,7 @@ export default function Template3() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
-                  className={`${styles.fontGrotesk} text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.9] tracking-tight text-white`}
+                  className={`${styles.template3FontGrotesk} text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.9] tracking-tight text-white`}
                 >
                   BACKEND <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-white animate-gradient">
@@ -531,7 +531,7 @@ export default function Template3() {
                 </MagneticButton>
                 <a
                   href="#contact"
-                  className={`px-6 py-3 text-sm ${styles.fontMono} text-gray-400 hover:text-white transition-colors flex items-center gap-2`}
+                  className={`px-6 py-3 text-sm ${styles.template3FontMono} text-gray-400 hover:text-white transition-colors flex items-center gap-2`}
                 >
                   <Command size={16} /> Contact Me
                 </a>
@@ -545,12 +545,12 @@ export default function Template3() {
               >
                 <div className="text-center">
                   <div
-                    className={`text-2xl ${styles.fontGrotesk} font-bold text-white`}
+                    className={`text-2xl ${styles.template3FontGrotesk} font-bold text-white`}
                   >
                     Daily
                   </div>
                   <div
-                    className={`text-xs ${styles.fontMono} text-gray-500 uppercase`}
+                    className={`text-xs ${styles.template3FontMono} text-gray-500 uppercase`}
                   >
                     Transactions
                   </div>
@@ -558,12 +558,12 @@ export default function Template3() {
                 <div className="w-px h-8 bg-white/10" />
                 <div className="text-center">
                   <div
-                    className={`text-2xl ${styles.fontGrotesk} font-bold text-white`}
+                    className={`text-2xl ${styles.template3FontGrotesk} font-bold text-white`}
                   >
                     3+
                   </div>
                   <div
-                    className={`text-xs ${styles.fontMono} text-gray-500 uppercase`}
+                    className={`text-xs ${styles.template3FontMono} text-gray-500 uppercase`}
                   >
                     Yrs Experience
                   </div>
@@ -571,12 +571,12 @@ export default function Template3() {
                 <div className="w-px h-8 bg-white/10" />
                 <div className="text-center">
                   <div
-                    className={`text-2xl ${styles.fontGrotesk} font-bold text-white`}
+                    className={`text-2xl ${styles.template3FontGrotesk} font-bold text-white`}
                   >
                     FinTech
                   </div>
                   <div
-                    className={`text-xs ${styles.fontMono} text-gray-500 uppercase`}
+                    className={`text-xs ${styles.template3FontMono} text-gray-500 uppercase`}
                   >
                     Specialist
                   </div>
@@ -592,10 +592,10 @@ export default function Template3() {
               className="md:col-span-2 hidden md:block"
             >
               <div
-                className={`${styles.glassPanel} p-1 rounded-lg rotate-3 hover:rotate-0 transition-transform duration-500`}
+                className={`${styles.template3GlassPanel} p-1 rounded-lg rotate-3 hover:rotate-0 transition-transform duration-500`}
               >
                 <div
-                  className={`bg-[#0a0a0a] rounded p-4 ${styles.fontMono} text-xs leading-relaxed overflow-hidden border border-white/5 shadow-2xl`}
+                  className={`bg-[#0a0a0a] rounded p-4 ${styles.template3FontMono} text-xs leading-relaxed overflow-hidden border border-white/5 shadow-2xl`}
                 >
                   <div className="flex gap-1.5 mb-4">
                     <div className="w-3 h-3 rounded-full bg-red-500/20" />
@@ -718,7 +718,7 @@ export default function Template3() {
         <section id="work" className="py-32 px-8 md:px-12 lg:px-16 bg-black/30">
           <div className="max-w-7xl mx-auto">
             <SectionTitle title="Work Experience" subtitle="Impact & Scale" />
-            <div className="space-y-12">
+            <div className={`${styles.template3ProjectCardContainer} space-y-0`}>
               <ProjectCard
                 title="WingUnified Platform"
                 type="Wing Bank (Cambodia)"
@@ -788,7 +788,7 @@ export default function Template3() {
                 <div className="relative pl-8 border-l border-white/10">
                   <span className="absolute -left-1.5 top-1 w-3 h-3 bg-blue-500 rounded-full shadow-[0_0_10px_#3B82F6]" />
                   <h3
-                    className={`${styles.fontGrotesk} text-2xl font-bold text-white mb-2`}
+                    className={`${styles.template3FontGrotesk} text-2xl font-bold text-white mb-2`}
                   >
                     Collaborative Leadership
                   </h3>
@@ -803,7 +803,7 @@ export default function Template3() {
                 <div className="relative pl-8 border-l border-white/10">
                   <span className="absolute -left-1.5 top-1 w-3 h-3 bg-purple-500 rounded-full" />
                   <h3
-                    className={`${styles.fontGrotesk} text-2xl font-bold text-white mb-2`}
+                    className={`${styles.template3FontGrotesk} text-2xl font-bold text-white mb-2`}
                   >
                     System Reliability
                   </h3>
@@ -817,9 +817,9 @@ export default function Template3() {
               </div>
 
               {}
-              <div className={`${styles.glassPanel} p-6 md:p-8 rounded-xl`}>
+              <div className={`${styles.template3GlassPanel} p-6 md:p-8 rounded-xl`}>
                 <h4
-                  className={`font-mono text-sm text-gray-500 mb-6 uppercase tracking-widest text-center ${styles.fontMono}`}
+                  className={`font-mono text-sm text-gray-500 mb-6 uppercase tracking-widest text-center ${styles.template3FontMono}`}
                 >
                   Education
                 </h4>
@@ -829,18 +829,18 @@ export default function Template3() {
                   </div>
                   <div>
                     <h5
-                      className={`text-white font-bold ${styles.fontGrotesk}`}
+                      className={`text-white font-bold ${styles.template3FontGrotesk}`}
                     >
                       Bachelor of Information Technology
                     </h5>
-                    <p className={`text-sm text-gray-400 ${styles.fontMono}`}>
+                    <p className={`text-sm text-gray-400 ${styles.template3FontMono}`}>
                       SETEC Institute (2018 - 2022)
                     </p>
                   </div>
                 </div>
                 <div className="space-y-2">
                   <div
-                    className={`flex justify-between text-sm ${styles.fontMono} text-gray-400`}
+                    className={`flex justify-between text-sm ${styles.template3FontMono} text-gray-400`}
                   >
                     <span>Backend Mastery</span>
                     <span className="text-green-400">100%</span>
@@ -867,7 +867,7 @@ export default function Template3() {
               className="mb-12"
             >
               <h2
-                className={`${styles.fontGrotesk} text-5xl md:text-7xl font-bold text-white mb-6`}
+                className={`${styles.template3FontGrotesk} text-5xl md:text-7xl font-bold text-white mb-6`}
               >
                 Let's Build <span className="text-blue-500">Scalable</span>{" "}
                 Systems.
@@ -901,14 +901,14 @@ export default function Template3() {
               </a>
               <a
                 href="#"
-                className={`${styles.glassPanel} p-4 hover:bg-white/10 rounded-full transition-all hover:scale-110`}
+                className={`${styles.template3GlassPanel} p-4 hover:bg-white/10 rounded-full transition-all hover:scale-110`}
               >
                 <Github size={24} className="text-white" />
               </a>
             </div>
 
             <footer
-              className={`mt-32 text-xs ${styles.fontMono} text-gray-600 flex flex-col md:flex-row justify-between items-center gap-4`}
+              className={`mt-32 text-xs ${styles.template3FontMono} text-gray-600 flex flex-col md:flex-row justify-between items-center gap-4`}
             >
               <div className="flex items-center gap-2">
                 <Code size={12} />

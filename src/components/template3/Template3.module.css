@@ -17,10 +17,49 @@
   background-color: rgba(59, 130, 246, 0.3);
 }
 
-.fontGrotesk {
+.template3FontGrotesk {
   font-family: "Space Grotesk", sans-serif;
 }
 
-.fontMono {
+.template3FontMono {
   font-family: "JetBrains Mono", monospace;
+}
+
+.template3GlassPanel {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.template3GlassPanel:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
+}
+
+.template3Scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.template3Scrollbar::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+.template3Scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.3);
+  border-radius: 4px;
+}
+
+.template3Scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.5);
+}
+
+.template3ProjectCardContainer > *:first-child {
+  border-top: none !important;
+}
+
+.template3ProjectCardContainer > *:not(:first-child) {
+  margin-top: 3rem;
 }

@@ -15,33 +15,32 @@
   min-height: 100vh;
 }
 
-.font-display {
+.template1FontDisplay {
   font-family: var(--font-display);
 }
 
-.font-mono {
+.template1FontMono {
   font-family: var(--font-mono);
 }
 
-/* Missing classes */
-.glass-panel {
+.template1GlassPanel {
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.05);
   transition: all 0.3s ease;
 }
 
-.glass-panel:hover {
+.template1GlassPanel:hover {
   background: rgba(255, 255, 255, 0.05);
   border-color: rgba(34, 211, 238, 0.3);
   box-shadow: 0 0 20px rgba(34, 211, 238, 0.1);
 }
 
-.neon-border {
+.template1NeonBorder {
   position: relative;
 }
 
-.neon-border::after {
+.template1NeonBorder::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -65,7 +64,7 @@
   transition: background 0.3s ease;
 }
 
-.neon-border:hover::after {
+.template1NeonBorder:hover::after {
   background: linear-gradient(
       45deg,
       transparent,
@@ -75,7 +74,7 @@
     border-box;
 }
 
-.timeline-line {
+.template1TimelineLine {
   background: linear-gradient(
     to bottom,
     transparent,
