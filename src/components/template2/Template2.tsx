@@ -351,7 +351,7 @@ void main() {
 `;
 
 const VanillaBackgroundShader = () => {
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   const mouseRef = useRef({ x: 0.5, y: 0.5 });
 
@@ -396,7 +396,7 @@ const VanillaBackgroundShader = () => {
 
     const clock = new THREE.Clock();
 
-    let animationFrameId;
+    let animationFrameId: number | undefined;
 
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate);
@@ -427,7 +427,7 @@ const VanillaBackgroundShader = () => {
       material.uniforms.uResolution.value.set(width, height);
     };
 
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
       mouseRef.current = {
         x: e.clientX / window.innerWidth,
 
@@ -444,7 +444,9 @@ const VanillaBackgroundShader = () => {
 
       window.removeEventListener("mousemove", handleMouseMove);
 
-      cancelAnimationFrame(animationFrameId);
+      if (animationFrameId !== undefined) {
+        cancelAnimationFrame(animationFrameId);
+      }
 
       if (containerRef.current && renderer.domElement) {
         containerRef.current.removeChild(renderer.domElement);
@@ -478,7 +480,7 @@ const VanillaBackgroundShader = () => {
 
 // Technical corner marker component for "expensive" look
 
-const TechMarker = ({ className }) => (
+const TechMarker = ({ className }: { className?: string }) => (
   <div
     className={cn(
       "absolute w-3 h-3 border-t border-l border-white/30 opacity-50",
@@ -684,7 +686,16 @@ const SkillsDashboard = () => {
   );
 };
 
-const ProjectRow = ({ project }) => {
+interface Project {
+  id: string;
+  year: string;
+  category: string;
+  title: string;
+  desc: string;
+  tech: string;
+}
+
+const ProjectRow = ({ project }: { project: Project }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (

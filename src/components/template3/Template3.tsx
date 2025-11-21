@@ -14,7 +14,7 @@ import styles from './Template3.module.css';
 // --- NATIVE WEBGL SHADER BACKGROUND ---
 
 const WebGLBackground = () => {
-  const canvasRef = useRef(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -97,8 +97,9 @@ const WebGLBackground = () => {
     `;
 
     // Compile Shader Helper
-    const createShader = (gl, type, source) => {
+    const createShader = (gl: WebGLRenderingContext, type: number, source: string) => {
       const shader = gl.createShader(type);
+      if (!shader) return null;
       gl.shaderSource(shader, source);
       gl.compileShader(shader);
       if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
@@ -146,7 +147,7 @@ const WebGLBackground = () => {
     const uTimeLocation = gl.getUniformLocation(program, "uTime");
     const uResolutionLocation = gl.getUniformLocation(program, "uResolution");
 
-    let animationFrameId;
+    let animationFrameId: number | undefined;
     const startTime = performance.now();
 
     const render = () => {
@@ -168,7 +169,9 @@ const WebGLBackground = () => {
     render();
 
     return () => {
-      cancelAnimationFrame(animationFrameId);
+      if (animationFrameId !== undefined) {
+        cancelAnimationFrame(animationFrameId);
+      }
       gl.deleteProgram(program);
       gl.deleteShader(vertexShader);
       gl.deleteShader(fragmentShader);
@@ -186,15 +189,16 @@ const WebGLBackground = () => {
 
 // --- UI COMPONENTS ---
 
-const MagneticButton = ({ children, className = "", onClick }) => {
-  const ref = useRef(null);
+const MagneticButton = ({ children, className = "", onClick }: { children: React.ReactNode; className?: string; onClick?: () => void }) => {
+  const ref = useRef<HTMLButtonElement | null>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
   const xSpring = useSpring(x, { stiffness: 150, damping: 15 });
   const ySpring = useSpring(y, { stiffness: 150, damping: 15 });
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (!ref.current) return;
     const { clientX, clientY } = e;
     const { left, top, width, height } = ref.current.getBoundingClientRect();
     const xPos = clientX - (left + width / 2);
@@ -225,7 +229,7 @@ const MagneticButton = ({ children, className = "", onClick }) => {
   );
 };
 
-const SectionTitle = ({ title, subtitle }) => (
+const SectionTitle = ({ title, subtitle }: { title: string; subtitle?: string }) => (
   <div className="mb-16">
     <motion.div 
       initial={{ opacity: 0, x: -20 }}
@@ -248,7 +252,7 @@ const SectionTitle = ({ title, subtitle }) => (
   </div>
 );
 
-const BentoCard = ({ title, items, icon: Icon, className = "", delay = 0 }) => {
+const BentoCard = ({ title, items, icon: Icon, className = "", delay = 0 }: { title: string; items: string[]; icon: React.ComponentType<{ size?: number; strokeWidth?: number }>; className?: string; delay?: number }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -279,7 +283,7 @@ const BentoCard = ({ title, items, icon: Icon, className = "", delay = 0 }) => {
   );
 };
 
-const ProjectCard = ({ title, type, stack, metrics, children }) => {
+const ProjectCard = ({ title, type, stack, metrics, children }: { title: string; type: string; stack: string[]; metrics: Array<{ label: string; value: string }>; children: React.ReactNode }) => {
   return (
     <motion.div 
       initial={{ opacity: 0, y: 40 }}
@@ -445,7 +449,7 @@ export default function Template3() {
                 transition={{ delay: 0.6 }}
                 className="flex flex-wrap gap-4"
               >
-                <MagneticButton onClick={() => document.getElementById('work').scrollIntoView()}>
+                <MagneticButton onClick={() => document.getElementById('work')?.scrollIntoView()}>
                   View Projects
                 </MagneticButton>
                 <a href="#contact" className={`px-6 py-3 text-sm ${styles.fontMono} text-gray-400 hover:text-white transition-colors flex items-center gap-2`}>
