@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
-import { motion, useScroll, useSpring, useMotionValue } from "framer-motion";
+import { motion, useScroll, useSpring, useMotionValue, AnimatePresence } from "framer-motion";
 
 import {
   Server,
@@ -21,6 +21,8 @@ import {
   MapPin,
   Phone,
   Monitor,
+  Menu,
+  X,
 } from "lucide-react";
 
 import styles from "./Template3.module.css";
@@ -251,7 +253,7 @@ const SectionTitle = ({
       viewport={{ once: true }}
       className="flex items-center gap-3 mb-2"
     >
-      <div className="h-[1px] w-8 bg-blue-500" />
+      <div className="h-px w-8 bg-blue-500" />
       <span
         className={`${styles.template3FontMono} text-blue-400 text-sm uppercase tracking-widest`}
       >
@@ -414,8 +416,17 @@ const ProjectCard = ({
   );
 };
 
+const calculateExperienceYears = () => {
+  const startYear = 2019;
+  const currentYear = new Date().getFullYear();
+  const years = currentYear - startYear;
+  return `${years}+`;
+};
+
 export default function Template3() {
+  const experienceYears = React.useMemo(() => calculateExperienceYears(), []);
   const [activeSection, setActiveSection] = useState("hero");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -427,18 +438,18 @@ export default function Template3() {
     <div
       className={`${styles.template3Container} ${styles.template3Scrollbar} relative`}
     >
-      {}
+      {/* Progress Bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 to-purple-600 origin-left z-50"
+        className="fixed top-0 left-0 right-0 h-1 bg-linear-to-r from-blue-600 to-purple-600 origin-left z-50"
         style={{ scaleX }}
       />
 
-      {}
+      {/* Background */}
       <WebGLBackground />
 
-      {}
+      {/* Navbar */}
       <nav className="fixed top-0 w-full z-40 border-b border-white/5 bg-[#030305]/80 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto px-8 md:px-12 lg:px-16 h-20 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-8 md:px-12 lg:px-16 h-20 flex items-center justify-between relative z-50">
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 bg-blue-500 animate-pulse rounded-full shadow-[0_0_10px_#3B82F6]" />
             <span
@@ -465,7 +476,44 @@ export default function Template3() {
               RESUME.PDF
             </a>
           </div>
+
+          <button
+            className="md:hidden text-white"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X /> : <Menu />}
+          </button>
         </div>
+
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="absolute top-20 left-0 w-full bg-[#030305] border-b border-white/5 px-8 py-6 md:hidden overflow-hidden"
+            >
+              <div className="flex flex-col gap-6">
+                {["Skills", "Work", "Process", "Contact"].map((item) => (
+                  <a
+                    key={item}
+                    href={`#${item.toLowerCase()}`}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`text-lg ${styles.template3FontMono} text-gray-400 hover:text-white transition-colors uppercase tracking-widest`}
+                  >
+                    {item}
+                  </a>
+                ))}
+                <a
+                  href="#"
+                  className={`inline-block w-fit px-4 py-2 bg-white/5 border border-white/10 hover:bg-white/10 text-xs ${styles.template3FontMono} text-blue-400 transition-all rounded`}
+                >
+                  RESUME.PDF
+                </a>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
 
       <main className="relative z-10">
@@ -493,10 +541,10 @@ export default function Template3() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
-                  className={`${styles.template3FontGrotesk} text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.9] tracking-tight text-white`}
+                  className={`${styles.template3FontGrotesk} text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[0.9] tracking-tight text-white`}
                 >
                   BACKEND <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-white animate-gradient">
+                  <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-500 via-purple-500 to-white animate-gradient">
                     ENGINEER
                   </span>
                 </motion.h1>
@@ -560,7 +608,7 @@ export default function Template3() {
                   <div
                     className={`text-2xl ${styles.template3FontGrotesk} font-bold text-white`}
                   >
-                    3+
+                    {experienceYears}
                   </div>
                   <div
                     className={`text-xs ${styles.template3FontMono} text-gray-500 uppercase`}

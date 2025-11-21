@@ -445,8 +445,8 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/[0.08] bg-[#050505]/80 backdrop-blur-md">
-      <div className="max-w-7xl mx-auto px-8 md:px-12 lg:px-16 h-20 flex items-center justify-between">
+    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/8 bg-[#050505]/80 backdrop-blur-md">
+      <div className="max-w-7xl mx-auto px-8 md:px-12 lg:px-16 h-20 flex items-center justify-between relative z-50">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 bg-white/10 flex items-center justify-center rounded-sm">
             <span className="font-display font-bold text-white">TS</span>
@@ -476,11 +476,44 @@ const Navbar = () => {
           {isOpen ? <X /> : <Menu />}
         </button>
       </div>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "100vh" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="absolute top-0 left-0 w-full bg-[#050505] pt-24 px-8 z-40 md:hidden overflow-hidden"
+          >
+            <div className="flex flex-col gap-8">
+              {["About", "Competencies", "Works", "Contact"].map((item) => (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  onClick={() => setIsOpen(false)}
+                  className="text-3xl font-display font-medium text-white hover:text-white/50 transition-colors"
+                >
+                  {item}
+                </a>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
 
+const calculateExperienceYears = () => {
+  const startYear = 2019;
+  const currentYear = new Date().getFullYear();
+  const years = currentYear - startYear;
+  return `${years}+ YEARS`;
+};
+
 const Hero = () => {
+  const experienceYears = useMemo(() => calculateExperienceYears(), []);
+
   return (
     <section
       id="about"
@@ -512,7 +545,7 @@ const Hero = () => {
             </motion.div>
 
             <motion.h1
-              className="font-display text-6xl md:text-8xl lg:text-[7rem] font-medium tracking-tight text-white leading-[0.9] mb-10"
+              className="font-display text-4xl sm:text-6xl md:text-8xl lg:text-[7rem] font-medium tracking-tight text-white leading-[0.9] mb-10"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.8 }}
@@ -551,7 +584,7 @@ const Hero = () => {
               <div className="flex justify-between border-b border-white/10 pb-2">
                 <span>EXPERIENCE</span>
 
-                <span className="text-white">6+ YEARS</span>
+                <span className="text-white">{experienceYears}</span>
               </div>
             </div>
           </div>
@@ -592,7 +625,7 @@ const SkillsDashboard = () => {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
               className={cn(
-                "group relative p-8 bg-[#0A0A0A] border border-white/[0.08] overflow-hidden transition-all duration-500 hover:bg-white/[0.02]",
+                "group relative p-8 bg-[#0A0A0A] border border-white/8 overflow-hidden transition-all duration-500 hover:bg-white/2",
 
                 skill.col
               )}
@@ -607,7 +640,7 @@ const SkillsDashboard = () => {
 
               {}
 
-              <div className="absolute inset-0 bg-gradient-to-b from-white/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              <div className="absolute inset-0 bg-linear-to-b from-white/3 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
               <div className="relative z-10 h-full flex flex-col justify-between">
                 <div className="flex justify-between items-start mb-8">
@@ -657,7 +690,7 @@ const ProjectRow = ({ project }: { project: Project }) => {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="group relative border-t border-white/10 py-12 cursor-none md:cursor-pointer transition-colors hover:bg-white/[0.02]"
+      className="group relative border-t border-white/10 py-12 cursor-none md:cursor-pointer transition-colors hover:bg-white/2"
     >
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
         {}
