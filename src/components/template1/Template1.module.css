@@ -28,6 +28,13 @@
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.glass-panel:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(34, 211, 238, 0.3);
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.1);
 }
 
 .neon-border {
@@ -55,14 +62,26 @@
   -webkit-mask-composite: destination-out;
   mask-composite: exclude;
   pointer-events: none;
+  transition: background 0.3s ease;
+}
+
+.neon-border:hover::after {
+  background: linear-gradient(
+      45deg,
+      transparent,
+      rgba(34, 211, 238, 0.8),
+      transparent
+    )
+    border-box;
 }
 
 .timeline-line {
   background: linear-gradient(
     to bottom,
     transparent,
-    rgba(255, 255, 255, 0.1) 20%,
-    rgba(255, 255, 255, 0.1) 80%,
+    rgba(255, 255, 255, 0.1) 10%,
+    rgba(34, 211, 238, 0.5) 50%,
+    rgba(255, 255, 255, 0.1) 90%,
     transparent
   );
 }
