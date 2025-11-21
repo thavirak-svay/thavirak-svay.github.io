@@ -22,3 +22,64 @@
 .font-mono {
   font-family: var(--font-mono);
 }
+
+/* Missing classes */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.neon-border {
+  position: relative;
+}
+
+.neon-border::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid transparent;
+  background: linear-gradient(
+      45deg,
+      transparent,
+      rgba(34, 211, 238, 0.3),
+      transparent
+    )
+    border-box;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.timeline-line {
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255, 255, 255, 0.1) 20%,
+    rgba(255, 255, 255, 0.1) 80%,
+    transparent
+  );
+}
+
+.template1Scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.template1Scrollbar::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+.template1Scrollbar::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+.template1Scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
