@@ -22,7 +22,7 @@ export const TechStackTicker = () => {
   const currentStack = stacks[index];
 
   return (
-    <div className="absolute bottom-12 right-4 md:bottom-10 md:right-10 flex flex-col items-end gap-2 md:gap-3 z-20">
+    <div className="absolute bottom-6 right-4 md:bottom-10 md:right-10 flex flex-col items-end gap-2 md:gap-3 z-20">
       <div className="flex items-center justify-end gap-2 mb-1">
         <span className="font-mono text-[10px] md:text-xs text-cyan-400 tracking-[0.2em] font-bold mr-1">TECH_STACK</span>
         <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_8px_rgba(34,211,238,0.6)]" />
