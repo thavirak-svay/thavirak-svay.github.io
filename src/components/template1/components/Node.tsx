@@ -10,7 +10,7 @@ export const Node = React.forwardRef<HTMLDivElement, NodeProps>(
         ref={ref}
         id={id}
         onClick={onClick}
-        className={`relative flex flex-col items-center justify-center p-4 border-2 transition-all duration-300 z-10 ${
+        className={`relative flex flex-col items-center justify-center p-2 md:p-4 border-2 transition-all duration-300 z-10 ${
           onClick ? "cursor-pointer hover:scale-105" : ""
         } ${
           isDead
@@ -26,15 +26,15 @@ export const Node = React.forwardRef<HTMLDivElement, NodeProps>(
             : "bg-slate-800 border-slate-600 hover:border-cyan-400"
         } ${
           type === "server" && !isDead ? "hover:shadow-[0_0_15px_rgba(34,211,238,0.2)]" : ""
-        } rounded-sm min-w-[100px] min-h-[80px]`}
+        } rounded-sm min-w-[80px] min-h-[60px] md:min-w-[100px] md:min-h-[80px]`}
       >
         <div className="mb-2 text-slate-300">
           {icon || (
-            type === "client" ? <Users size={20} /> :
-            type === "lb" ? <GitMerge size={20} /> :
-            type === "db" ? <Database size={20} /> :
-            type === "cache" ? <Layers size={20} /> :
-            <Server size={20} />
+            type === "client" ? <Users size={16} className="md:w-5 md:h-5" /> :
+            type === "lb" ? <GitMerge size={16} className="md:w-5 md:h-5" /> :
+            type === "db" ? <Database size={16} className="md:w-5 md:h-5" /> :
+            type === "cache" ? <Layers size={16} className="md:w-5 md:h-5" /> :
+            <Server size={16} className="md:w-5 md:h-5" />
           )}
         </div>
         <span className="font-mono text-[10px] uppercase tracking-widest text-slate-300 mb-1">

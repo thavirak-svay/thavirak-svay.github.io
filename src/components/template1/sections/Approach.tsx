@@ -194,10 +194,10 @@ export const Approach = () => {
           {/* Simulator Area */}
           <div 
             ref={containerRef}
-            className="lg:col-span-2 bg-slate-900/50 border border-white/5 rounded-sm relative overflow-hidden p-8 flex flex-col justify-between"
+            className="lg:col-span-2 bg-slate-900/50 border border-white/5 rounded-sm relative overflow-hidden p-4 md:p-8 flex flex-col justify-between"
           >
             {/* Grid Layout */}
-            <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-3 gap-4 h-full relative z-10">
+            <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-3 gap-2 md:gap-4 h-full relative z-10">
               {/* Client (Left, Centered vertically) */}
               <div className="col-span-1 row-span-1 md:row-span-3 flex items-center justify-center py-4 md:py-0">
                 <Node 
