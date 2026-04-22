@@ -76,7 +76,7 @@ export const ExperienceTimeline = () => {
       className="py-20 md:py-32 px-6 md:px-20 relative z-10 bg-[#040406]"
     >
       <div className="max-w-6xl mx-auto">
-        <h2 className="font-display text-5xl md:text-7xl font-bold text-white mb-24 text-center">
+        <h2 className="font-display text-5xl md:text-7xl font-bold text-white mb-24 text-center text-balance">
           CAREER TRAJECTORY
         </h2>
 
@@ -107,7 +107,7 @@ export const ExperienceTimeline = () => {
                     }`}
                   >
                     <div
-                      className={`${styles.template1GlassPanel} ${styles.template1NeonBorder} relative p-6 md:p-8 rounded-none overflow-hidden group-hover:shadow-[0_0_30px_-10px_rgba(34,211,238,0.1)] transition-all duration-300 ${
+                      className={`${styles.template1GlassPanel} ${styles.template1NeonBorder} relative p-6 md:p-8 rounded-none overflow-hidden group-hover:shadow-[0_0_30px_-10px_rgba(34,211,238,0.1)] transition-[background,box-shadow] duration-300 ${
                         exp.highlight ? "shadow-[0_0_30px_-10px_rgba(34,211,238,0.15)] border-cyan-500/20" : ""
                       }`}
                     >
@@ -119,7 +119,7 @@ export const ExperienceTimeline = () => {
                         {exp.period}
                       </div>
                       
-                      <h3 className="font-display text-2xl md:text-3xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">
+                      <h3 className="font-display text-2xl md:text-3xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-[color] duration-300 text-balance">
                         {exp.role}
                       </h3>
                       

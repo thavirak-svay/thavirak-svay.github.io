@@ -29,13 +29,13 @@ export const TechStackTicker = () => {
       </div>
 
       <div className="flex flex-col items-end gap-0.5 min-h-[40px]">
-        <AnimatePresence mode="wait">
+        <AnimatePresence initial={false} mode="wait">
           <motion.div
             key={currentStack.label}
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.15, ease: "easeOut" }}
             className="flex flex-col items-end gap-0.5"
           >
             <div className="flex items-center justify-end gap-2">
@@ -46,7 +46,7 @@ export const TechStackTicker = () => {
             <div className="flex items-center gap-2 font-mono text-[10px] md:text-xs text-slate-400 tracking-wide">
               {currentStack.items.map((item, j) => (
                 <React.Fragment key={item}>
-                  <span className="hover:text-cyan-300 transition-colors cursor-default">
+                  <span className="hover:text-cyan-300 transition-[color] duration-150 cursor-default">
                     {item}
                   </span>
                   {j < currentStack.items.length - 1 && (

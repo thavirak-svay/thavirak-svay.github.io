@@ -42,13 +42,13 @@ export const StatCard = ({ stat, index }: { stat: any; index: number }) => {
       <div className="absolute inset-0 bg-cyan-500/5 animate-pulse" />
 
       <div className="relative z-10">
-        <div className="text-2xl md:text-3xl font-display font-bold text-white mb-1 tracking-wider">
+        <div className="text-2xl md:text-3xl font-display font-bold text-white mb-1 tracking-wider tabular-nums">
           {stat.isText ? (
             stat.val
           ) : (
             <>
               <AnimatedCounter value={stat.val} />
-              <span className="text-cyan-400">{stat.suffix}</span>
+              <span className="text-cyan-400 tabular-nums">{stat.suffix}</span>
             </>
           )}
         </div>

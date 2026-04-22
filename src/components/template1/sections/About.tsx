@@ -11,7 +11,7 @@ export const About = () => {
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col gap-12">
           <div>
-            <h2 className="font-display text-5xl md:text-6xl font-bold text-white mb-8">
+            <h2 className="font-display text-5xl md:text-6xl font-bold text-white mb-8 text-balance">
               ENGINEERING <br />
               <span className="text-cyan-400">PHILOSOPHY</span>
             </h2>
@@ -56,7 +56,7 @@ export const About = () => {
                       <span className="text-cyan-400">&quot;{item.quote}&quot;</span>{" "}
                       — {item.author}
                     </div>
-                    <p className="font-mono text-sm text-slate-300 leading-relaxed max-w-2xl">
+                    <p className="font-mono text-sm text-slate-300 leading-relaxed max-w-2xl text-pretty">
                       {item.desc}
                     </p>
                   </div>

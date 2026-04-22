@@ -75,7 +75,7 @@ export const Projects = () => {
       <div className="max-w-6xl mx-auto">
         <div className="mb-20 flex items-end justify-between">
           <div>
-            <h2 className="font-display text-5xl md:text-7xl font-bold text-white">
+            <h2 className="font-display text-5xl md:text-7xl font-bold text-white text-balance">
               SELECTED WORKS
             </h2>
             <p className="font-mono text-slate-400 mt-4">
@@ -86,7 +86,7 @@ export const Projects = () => {
             <div className="text-xs font-mono text-slate-400">
               PROJECT_COUNT
             </div>
-            <div className="text-4xl font-display text-slate-400">04</div>
+            <div className="text-4xl font-display text-slate-400 tabular-nums">04</div>
           </div>
         </div>
 

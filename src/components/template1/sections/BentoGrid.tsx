@@ -48,7 +48,7 @@ export const BentoGrid = () => {
   return (
     <section id="skills" className="py-20 md:py-32 px-6 md:px-20 relative z-10">
       <div className="mb-16 max-w-6xl mx-auto">
-        <h2 className="font-display text-5xl md:text-7xl font-bold text-white mb-4">
+        <h2 className="font-display text-5xl md:text-7xl font-bold text-white mb-4 text-balance">
           CORE COMPETENCIES
         </h2>
         <div className="h-1 w-20 bg-cyan-500" />
@@ -76,7 +76,7 @@ export const BentoGrid = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
-            className={`${styles.template1GlassPanel} p-8 rounded-none relative overflow-hidden group ${f.col} ${f.row} ${styles.template1NeonBorder} transition-colors duration-300`}
+            className={`${styles.template1GlassPanel} p-8 rounded-none relative overflow-hidden group ${f.col} ${f.row} ${styles.template1NeonBorder} transition-[color,background,box-shadow] duration-300`}
           >
             <div className="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-100 transition-opacity">
               {f.icon}

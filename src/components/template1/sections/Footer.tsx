@@ -19,34 +19,34 @@ export const Footer = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 relative z-10">
         <div>
-          <h3 className="font-display text-4xl font-bold text-white mb-6">
+          <h3 className="font-display text-4xl font-bold text-white mb-6 text-balance">
             LET'S BUILD <br /> SOMETHING{" "}
             <span className="text-cyan-400">ROBUST</span>
           </h3>
           <div className="flex flex-col gap-4">
             <a
               href="mailto:thaavirak@gmail.com"
-              className="flex items-center gap-3 text-slate-200 hover:text-cyan-400 transition-colors font-mono text-sm"
+              className="flex items-center gap-3 text-slate-200 hover:text-cyan-400 font-mono text-sm active:scale-[0.96] transition-[color,scale] duration-150 ease-out"
             >
               <Mail size={18} /> thaavirak@gmail.com
             </a>
             <a
               href="tel:+85570933433"
-              className="flex items-center gap-3 text-slate-200 hover:text-cyan-400 transition-colors font-mono text-sm"
+              className="flex items-center gap-3 text-slate-200 hover:text-cyan-400 font-mono text-sm active:scale-[0.96] transition-[color,scale] duration-150 ease-out"
             >
               <Phone size={18} /> +855 70 933 433
             </a>
             <a
               href="https://linkedin.com/in/thavirak-svay"
               target="_blank"
-              className="flex items-center gap-3 text-slate-200 hover:text-cyan-400 transition-colors font-mono text-sm"
+              className="flex items-center gap-3 text-slate-200 hover:text-cyan-400 font-mono text-sm active:scale-[0.96] transition-[color,scale] duration-150 ease-out"
             >
               <Linkedin size={18} /> linkedin.com/in/thavirak-svay
             </a>
             <a
               href="https://thavirak-svay.github.io/"
               target="_blank"
-              className="flex items-center gap-3 text-slate-200 hover:text-cyan-400 transition-colors font-mono text-sm"
+              className="flex items-center gap-3 text-slate-200 hover:text-cyan-400 font-mono text-sm active:scale-[0.96] transition-[color,scale] duration-150 ease-out"
             >
               <Globe size={18} /> thavirak-svay.github.io
             </a>

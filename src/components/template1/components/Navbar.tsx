@@ -29,11 +29,11 @@ export const Navbar = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-1 bg-white/5 rounded-full px-1 py-1 border border-white/5">
-            {["ABOUT", "SKILLS", "CAREER", "PROJECTS"].map((item) => (
+            {["ABOUT", "SKILLS", "CAREER", "PROJECTS", "LEADERSHIP"].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="px-5 py-1.5 rounded-full text-[10px] font-mono text-slate-400 hover:text-cyan-400 hover:bg-white/5 transition-all uppercase tracking-widest"
+                className="px-5 py-1.5 rounded-full text-[10px] font-mono text-slate-400 hover:text-cyan-400 hover:bg-white/5 uppercase tracking-widest active:scale-[0.96] transition-[color,scale] duration-150 ease-out"
               >
                 {item}
               </a>
@@ -44,14 +44,14 @@ export const Navbar = () => {
           <div className="pr-2 flex items-center gap-2">
             <a
               href="mailto:thaavirak@gmail.com"
-              className="hidden md:flex px-5 py-2 rounded-full bg-white text-black hover:bg-cyan-400 transition-colors font-display font-bold text-xs items-center gap-2"
+              className="hidden md:flex px-5 py-2 rounded-full bg-white text-black hover:bg-cyan-400 font-display font-bold text-xs items-center gap-2 active:scale-[0.96] transition-[background-color,scale] duration-150 ease-out"
             >
               <span>CONTACT</span>
             </a>
 
             {/* Mobile Toggle */}
             <button
-              className="md:hidden p-2 text-white hover:text-cyan-400 transition-colors"
+              className="md:hidden p-2 text-white hover:text-cyan-400 active:scale-[0.96] transition-[color,scale] duration-150 ease-out"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
@@ -61,28 +61,29 @@ export const Navbar = () => {
       </motion.nav>
 
       {/* Mobile Menu Overlay */}
-      <AnimatePresence>
+      <AnimatePresence initial={false} mode="wait">
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-40 bg-[#0a0a0a] pt-32 px-6 pb-6 md:hidden flex flex-col"
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.15 }}
+            className="fixed inset-0 z-40 bg-[#0a0a0a] pt-32 px-6 pb-6 md:hidden flex flex-col overflow-hidden"
           >
             <div className="flex flex-col gap-6 items-center">
-              {["ABOUT", "SKILLS", "CAREER", "PROJECTS"].map((item) => (
+              {["ABOUT", "SKILLS", "CAREER", "PROJECTS", "LEADERSHIP"].map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-3xl font-display font-bold text-white hover:text-cyan-400 transition-colors"
+                  className="text-3xl font-display font-bold text-white hover:text-cyan-400 active:scale-[0.96] transition-[color,scale] duration-150 ease-out"
                 >
                   {item}
                 </a>
               ))}
               <a
                 href="mailto:thaavirak@gmail.com"
-                className="mt-8 px-8 py-3 rounded-full bg-white text-black font-display font-bold hover:bg-cyan-400 transition-colors"
+                className="mt-8 px-8 py-3 rounded-full bg-white text-black font-display font-bold hover:bg-cyan-400 active:scale-[0.96] transition-[background-color,scale] duration-150 ease-out"
               >
                 CONTACT ME
               </a>

@@ -12,7 +12,7 @@ import { BentoGrid } from "./sections/BentoGrid";
 import { ExperienceTimeline } from "./sections/ExperienceTimeline";
 import { Education } from "./sections/Education";
 import { Projects } from "./sections/Projects";
-import { Approach } from "./sections/Approach";
+import { Leadership } from "./sections/Leadership";
 import { Footer } from "./sections/Footer";
 
 const Template1 = () => {
@@ -34,7 +34,7 @@ const Template1 = () => {
         <ExperienceTimeline />
         <Education />
         <Projects />
-        <Approach />
+        <Leadership />
         <Footer />
       </main>
 

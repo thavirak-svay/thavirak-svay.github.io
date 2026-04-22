@@ -25,7 +25,7 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
             <span className="font-mono text-cyan-400 text-sm tracking-widest">
               0{index + 1}
             </span>
-            <h3 className="font-display text-4xl md:text-5xl font-medium text-white group-hover:text-cyan-400 transition-colors duration-300">
+            <h3 className="font-display text-4xl md:text-5xl font-medium text-white group-hover:text-cyan-400 transition-[color] duration-300 text-balance">
               {project.title}
             </h3>
           </div>
@@ -35,7 +35,7 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
               <div className="text-[10px] font-mono text-slate-400 mb-3 tracking-widest uppercase">
                 [ CONSTRAINT ]
               </div>
-              <p className="font-mono text-slate-200 text-sm leading-relaxed font-light">
+              <p className="font-mono text-slate-200 text-sm leading-relaxed font-light text-pretty">
                 {project.problem}
               </p>
             </div>
@@ -43,7 +43,7 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
               <div className="text-[10px] font-mono text-cyan-400 mb-3 tracking-widest uppercase">
                 [ IMPLEMENTATION ]
               </div>
-              <p className="font-mono text-slate-200 text-sm leading-relaxed font-light">
+              <p className="font-mono text-slate-200 text-sm leading-relaxed font-light text-pretty">
                 {project.solution}
               </p>
             </div>
@@ -62,14 +62,15 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
         </div>
 
         {/* Right Panel - Stats/Arch */}
-        <div className={`${styles.template1GlassPanel} ${styles.template1NeonBorder} w-full md:w-80 relative h-48 rounded-none overflow-hidden transition-all duration-300`}>
-          <AnimatePresence mode="wait">
+        <div className={`${styles.template1GlassPanel} ${styles.template1NeonBorder} w-full md:w-80 relative h-48 rounded-none overflow-hidden transition-[background,box-shadow] duration-300`}>
+          <AnimatePresence initial={false} mode="wait">
             {!isHovered ? (
               <motion.div
                 key="stats"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.15, ease: "easeIn" }}
                 className="absolute inset-0 p-8 flex flex-col justify-center"
               >
                 <div className="grid grid-cols-1 gap-6">
@@ -99,8 +100,8 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
                 key="arch"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.2 }}
+                exit={{ opacity: 0, scale: 0.95, y: -12 }}
+                transition={{ duration: 0.15 }}
                 className="absolute inset-0 p-8 bg-cyan-950/20 backdrop-blur-sm flex flex-col justify-center h-full"
               >
                 <div className="text-[10px] text-cyan-300 font-mono tracking-widest mb-4 uppercase">
