@@ -2,7 +2,7 @@
 
 import { Shield, Activity, Zap } from "lucide-react";
 
-export const About = () => {
+export const EngineeringPhilosophy = () => {
   return (
     <section
       id="about"

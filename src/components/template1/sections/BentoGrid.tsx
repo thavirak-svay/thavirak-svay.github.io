@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import { motion } from "framer-motion";
 import { Cpu, Container, Database, ShieldCheck } from "lucide-react";
 import styles from "../Template1.module.css";
-import { StatCard } from "../components/StatComponents";
+import { StatCard } from "../components/AnimatedStats";
 import { calculateExperienceYears } from "../utils/helpers";
 
 export const BentoGrid = () => {

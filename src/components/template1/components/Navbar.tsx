@@ -51,10 +51,27 @@ export const Navbar = () => {
 
             {/* Mobile Toggle */}
             <button
-              className="md:hidden p-2 text-white hover:text-cyan-400 active:scale-[0.96] transition-[color,scale] duration-150 ease-out"
+              className="md:hidden relative w-10 h-10 flex items-center justify-center text-white hover:text-cyan-400 active:scale-[0.96] transition-[color,scale] duration-150 ease-out"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
+              <motion.span
+                key="menu"
+                initial={false}
+                animate={{ opacity: isMobileMenuOpen ? 0 : 1, scale: isMobileMenuOpen ? 0.25 : 1 }}
+                transition={{ type: "spring", duration: 0.3, bounce: 0 }}
+                className="absolute"
+              >
+                <Menu size={18} />
+              </motion.span>
+              <motion.span
+                key="x"
+                initial={false}
+                animate={{ opacity: isMobileMenuOpen ? 1 : 0, scale: isMobileMenuOpen ? 1 : 0.25 }}
+                transition={{ type: "spring", duration: 0.3, bounce: 0 }}
+                className="absolute"
+              >
+                <X size={18} />
+              </motion.span>
             </button>
           </div>
         </div>

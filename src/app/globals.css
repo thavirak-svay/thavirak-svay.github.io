@@ -1,6 +1,435 @@
 @import "tailwindcss";
 
+/* Template2 Design System - CSS Variables */
+:root {
+  /* Primary Colors */
+  --text: #141414;
+  --text-dark: #1a1a1a;
+  --text-body: #444;
+  --muted: #6B6B6B;
+  
+  /* Accent Colors */
+  --accent: #2D4A47;
+  --accent-hover: #1D3A37;
+  --secondary: #D1D1C7;
+  
+  /* Background Colors */
+  --bg: #F4F4EF;
+  --bg-alt: #E8E8E3;
+  --surface: #F5F5F0;
+  --navbar-bg: #f7f5f2;
+  --white: #fff;
+  
+  /* Border/Shadow Colors */
+  --border: rgba(26, 26, 26, 0.08);
+  --border-dark: rgba(26, 26, 26, 0.12);
+  --border-accent: rgba(45, 74, 71, 0.3);
+  --border-accent-light: rgba(45, 74, 71, 0.2);
+  --shadow-sm: rgba(0, 0, 0, 0.04);
+  --shadow-md: rgba(0, 0, 0, 0.06);
+  --shadow-lg: rgba(0, 0, 0, 0.08);
+  --scrollbar-track: rgba(26, 26, 26, 0.2);
+  --scrollbar-thumb: rgba(26, 26, 26, 0.4);
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--white);
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display), 'Instrument Serif', Georgia, serif;
+  }
+  .font-body {
+    font-family: var(--font-body), 'Karla', sans-serif;
+  }
+}
+
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.phil-item {
+  opacity: 0;
+  transform: translateX(50px);
+  clip-path: inset(0 0 0 0);
+}
+
+.phil-item.from-left {
+  transform: translateX(-50px);
+}
+
+.phil-item.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1s ease;
+}
+
+/* Systems Architecture - Horizontal Scroll Section */
+.systems-container {
+  overflow: hidden;
+  height: 100vh;
+  background-color: var(--bg);
+}
+
+.systems-panel {
+  display: flex;
+  flex-wrap: nowrap;
+  width: fit-content;
+  height: 100%;
+}
+
+.systems-section {
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 4rem;
+  background-color: var(--bg);
+}
+
+.systems-section-alt {
+  background-color: var(--bg-alt);
+}
+
+.systems-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  max-width: 800px;
+}
+
+@media (min-width: 1024px) {
+  .systems-inner {
+    flex-direction: row;
+    gap: 6rem;
+    max-width: none;
+  }
+
+  .systems-content {
+    max-width: 400px;
+  }
+}
+
+.systems-content {
+  flex-shrink: 0;
+}
+
+/* SVG Architecture Diagrams */
+.sys-svg-container {
+  flex-shrink: 0;
+}
+
+.sys-svg {
+  width: 300px;
+  height: 150px;
+}
+
+@media (min-width: 1024px) {
+  .sys-svg {
+    width: 400px;
+    height: 200px;
+  }
+}
+
+.sys-path {
+  fill: none;
+  stroke: var(--secondary);
+  stroke-width: 2;
+  stroke-dasharray: 200;
+  stroke-dashoffset: 0;
+}
+
+.sys-node {
+  fill: none;
+  stroke: var(--text);
+  stroke-width: 2;
+  opacity: 1;
+}
+
+.sys-accent {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-dasharray: 200;
+  stroke-dashoffset: 0;
+}
+
+.sys-dashed {
+  stroke-dasharray: 4 4 !important;
+  stroke-dashoffset: 0 !important;
+}
+
+.sys-node-accent {
+  fill: var(--accent);
+  opacity: 1;
+}
+
+.section-label-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.section-label-underline {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+}
+
+.section-label-mask {
+  position: relative;
+  overflow: hidden;
+}
+
+.section-label-mask-inner {
+  display: inline-block;
+  transform: translateX(-100%);
+}
+
+/* Skills Fullscreen - Horizontal Scroll Section */
+.skills-fullscreen-container {
+  overflow: hidden;
+  height: 100vh;
+  background-color: var(--bg);
+}
+
+.skills-fullscreen-panel {
+  display: flex;
+  flex-wrap: nowrap;
+  width: fit-content;
+  height: 100%;
+}
+
+.skills-fullscreen-section {
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 4rem;
+  background-color: var(--bg);
+}
+
+.skills-fullscreen-section-alt {
+  background-color: var(--bg-alt);
+}
+
+.skills-fullscreen-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  max-width: 800px;
+}
+
+@media (min-width: 1024px) {
+  .skills-fullscreen-inner {
+    flex-direction: row;
+    gap: 6rem;
+    max-width: none;
+  }
+
+  .skills-fullscreen-content {
+    max-width: 400px;
+  }
+}
+
+.skills-fullscreen-content {
+  flex-shrink: 0;
+}
+
+/* Projects Fullscreen - Horizontal Scroll Section */
+.projects-fullscreen-container {
+  overflow: hidden;
+  height: 100vh;
+  background-color: var(--bg);
+}
+
+.projects-fullscreen-panel {
+  display: flex;
+  flex-wrap: nowrap;
+  width: fit-content;
+  height: 100%;
+}
+
+.projects-fullscreen-section {
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 4rem;
+  background-color: var(--bg);
+}
+
+.projects-fullscreen-section-alt {
+  background-color: var(--bg-alt);
+}
+
+.projects-fullscreen-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  max-width: 800px;
+}
+
+@media (min-width: 1024px) {
+  .projects-fullscreen-inner {
+    flex-direction: row;
+    gap: 6rem;
+    max-width: none;
+  }
+
+  .projects-fullscreen-content {
+    max-width: 400px;
+  }
+}
+
+.projects-fullscreen-content {
+  flex-shrink: 0;
+}
+
+/* Philosophy Fullscreen - Horizontal Scroll Section */
+.philosophy-fullscreen-container {
+  overflow: hidden;
+  height: 100vh;
+  background-color: var(--bg);
+}
+
+.philosophy-fullscreen-panel {
+  display: flex;
+  flex-wrap: nowrap;
+  width: fit-content;
+  height: 100%;
+}
+
+.philosophy-fullscreen-section {
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 4rem;
+  background-color: var(--bg);
+}
+
+.philosophy-fullscreen-section-alt {
+  background-color: var(--bg-alt);
+}
+
+.philosophy-fullscreen-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  max-width: 800px;
+}
+
+@media (min-width: 1024px) {
+  .philosophy-fullscreen-inner {
+    flex-direction: row;
+    gap: 6rem;
+    max-width: none;
+  }
+
+  .philosophy-fullscreen-content {
+    max-width: 400px;
+  }
+}
+
+.philosophy-fullscreen-content {
+  flex-shrink: 0;
+}
+
+/* Philosophy Word Reveal - Vertical Stack */
+.philosophy-word-reveal-container {
+  overflow: hidden;
+  background-color: var(--bg);
+}
+
+.philosophy-word-reveal-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.philosophy-word-reveal-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 4rem;
+  background-color: var(--bg);
+}
+
+.philosophy-word-reveal-section-alt {
+  background-color: var(--bg-alt);
+}
+
+.philosophy-word-reveal-inner {
+  max-width: 800px;
+  text-align: center;
+}
+
+.philosophy-word-reveal-content {
+  width: 100%;
+}
+
+.quote-container {
+  line-height: 1.2;
+}
+
+.quote-word {
+  transition: color 0.3s ease, font-weight 0.3s ease;
+}
+
+.quote-explanation {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Skills Vertical Stack */
+.skills-vertical-container {
+  overflow: hidden;
+  background-color: var(--bg);
+}
+
+.skills-vertical-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.skills-vertical-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 4rem;
+  background-color: var(--bg);
+}
+
+.skills-vertical-section-alt {
+  background-color: var(--bg-alt);
+}
+
+.skills-vertical-inner {
+  max-width: 800px;
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .skills-vertical-inner {
+    max-width: 1000px;
+  }
+}
+
+.skills-vertical-content {
+  width: 100%;
 }

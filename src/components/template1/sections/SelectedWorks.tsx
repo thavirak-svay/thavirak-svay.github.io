@@ -66,7 +66,7 @@ const projects: Project[] = [
   },
 ];
 
-export const Projects = () => {
+export const SelectedWorks = () => {
   return (
     <section
       id="projects"

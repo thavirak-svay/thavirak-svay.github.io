@@ -108,37 +108,7 @@ export const Leadership = () => {
           ))}
         </div>
 
-        {/* Leadership Philosophy */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-          className="mt-12 border-t border-white/10 pt-12"
-        >
-          <div className="flex flex-col md:flex-row gap-8 items-start">
-            <div className="md:w-1/3">
-              <h4 className="font-display text-2xl font-bold text-white mb-4">
-                Leadership Philosophy
-              </h4>
-              <p className="font-mono text-xs text-slate-400 uppercase tracking-widest">
-                HOW I LEAD
-              </p>
-            </div>
-            <div className="md:w-2/3">
-              <blockquote className="font-mono text-slate-200 leading-relaxed border-l-2 border-cyan-500 pl-6">
-                <p className="mb-4">
-                  "I believe technical leadership is about <span className="text-cyan-400">enabling others</span>, not directing them.
-                  My role is to set clear standards, remove blockers, and create space for developers to grow and deliver."
-                </p>
-                <p>
-                  "Good architecture decisions come from <span className="text-cyan-400">collaboration</span>, not unilateral authority.
-                  I facilitate discussions that surface trade-offs, document decisions, and ensure buy-in across teams."
-                </p>
-              </blockquote>
-            </div>
-          </div>
-        </motion.div>
+        
       </div>
     </section>
   );

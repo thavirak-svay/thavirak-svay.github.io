@@ -7,11 +7,11 @@ import styles from "./Template1.module.css";
 import { NativeShaderCanvas } from "./components/NativeShaderCanvas";
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./sections/Hero";
-import { About } from "./sections/About";
+import { EngineeringPhilosophy } from "./sections/EngineeringPhilosophy";
 import { BentoGrid } from "./sections/BentoGrid";
 import { ExperienceTimeline } from "./sections/ExperienceTimeline";
 import { Education } from "./sections/Education";
-import { Projects } from "./sections/Projects";
+import { SelectedWorks } from "./sections/SelectedWorks";
 import { Leadership } from "./sections/Leadership";
 import { Footer } from "./sections/Footer";
 
@@ -29,11 +29,11 @@ const Template1 = () => {
       <main className="relative z-10">
         <Navbar />
         <Hero />
-        <About />
+        <EngineeringPhilosophy />
         <BentoGrid />
         <ExperienceTimeline />
         <Education />
-        <Projects />
+        <SelectedWorks />
         <Leadership />
         <Footer />
       </main>

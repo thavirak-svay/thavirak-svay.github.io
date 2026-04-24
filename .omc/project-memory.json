@@ -1,0 +1,421 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1776830480656,
+  "projectRoot": "/Users/thavirak.svay/personal/thavirak-svay.github.io",
+  "techStack": {
+    "languages": [
+      {
+        "name": "JavaScript/TypeScript",
+        "version": ">=21.0.0",
+        "confidence": "high",
+        "markers": [
+          "package.json"
+        ]
+      },
+      {
+        "name": "TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "tsconfig.json"
+        ]
+      }
+    ],
+    "frameworks": [
+      {
+        "name": "next",
+        "version": "16.0.3",
+        "category": "fullstack"
+      },
+      {
+        "name": "react",
+        "version": "19.2.0",
+        "category": "frontend"
+      },
+      {
+        "name": "react-dom",
+        "version": "19.2.0",
+        "category": "frontend"
+      }
+    ],
+    "packageManager": "npm",
+    "runtime": "Node.js 21.0.0"
+  },
+  "build": {
+    "buildCommand": "npm run build",
+    "testCommand": null,
+    "lintCommand": "npm run lint",
+    "devCommand": "npm run dev",
+    "scripts": {
+      "dev": "next dev",
+      "build": "next build",
+      "export": "next build",
+      "start": "next start",
+      "lint": "eslint",
+      "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
+      "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\""
+    }
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": "type-based"
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "public",
+      "src"
+    ],
+    "gitBranches": {
+      "defaultBranch": "main",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "public": {
+      "path": "public",
+      "purpose": "Public files",
+      "fileCount": 6,
+      "lastAccessed": 1776830480618,
+      "keyFiles": [
+        "file.svg",
+        "globe.svg",
+        "next.svg",
+        "vercel.svg",
+        "window.svg"
+      ]
+    },
+    "src": {
+      "path": "src",
+      "purpose": "Source code",
+      "fileCount": 0,
+      "lastAccessed": 1776830480626,
+      "keyFiles": []
+    },
+    "src/app": {
+      "path": "src/app",
+      "purpose": "Application code",
+      "fileCount": 7,
+      "lastAccessed": 1776830480628,
+      "keyFiles": [
+        "apple-icon.svg",
+        "favicon.ico",
+        "favicon.svg"
+      ]
+    },
+    "src/components": {
+      "path": "src/components",
+      "purpose": "UI components",
+      "fileCount": 0,
+      "lastAccessed": 1776830480628,
+      "keyFiles": []
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "src/components/template1/sections/Approach.tsx",
+      "accessCount": 16,
+      "lastAccessed": 1776831671621,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template1/sections/Hero.tsx",
+      "accessCount": 13,
+      "lastAccessed": 1776831688255,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template1/components/ProjectCard.tsx",
+      "accessCount": 9,
+      "lastAccessed": 1776831601969,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template1/components/Navbar.tsx",
+      "accessCount": 9,
+      "lastAccessed": 1776832355463,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template2/sections/Projects.tsx",
+      "accessCount": 7,
+      "lastAccessed": 1776834377783,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template1/sections/ExperienceTimeline.tsx",
+      "accessCount": 6,
+      "lastAccessed": 1776833592638,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template2/sections/Experience.tsx",
+      "accessCount": 5,
+      "lastAccessed": 1776834009229,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template2/sections/Hero.tsx",
+      "accessCount": 5,
+      "lastAccessed": 1776834293815,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template2/Template2.tsx",
+      "accessCount": 5,
+      "lastAccessed": 1776834443660,
+      "type": "file"
+    },
+    {
+      "path": "src/app/page.tsx",
+      "accessCount": 5,
+      "lastAccessed": 1776840434128,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template2/Template2.module.css",
+      "accessCount": 5,
+      "lastAccessed": 1776840631251,
+      "type": "file"
+    },
+    {
+      "path": "src/app/layout.tsx",
+      "accessCount": 5,
+      "lastAccessed": 1776847185111,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template1/components/TechStackTicker.tsx",
+      "accessCount": 4,
+      "lastAccessed": 1776831602209,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template1/sections/About.tsx",
+      "accessCount": 4,
+      "lastAccessed": 1776833592531,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template1/sections/Projects.tsx",
+      "accessCount": 4,
+      "lastAccessed": 1776833592685,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template1/sections/BentoGrid.tsx",
+      "accessCount": 4,
+      "lastAccessed": 1776833592805,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template1/sections/Footer.tsx",
+      "accessCount": 4,
+      "lastAccessed": 1776833592837,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template1/components/Node.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1776831602454,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template1/Template1.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1776832355109,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template1/sections/Education.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1776833592892,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template2/types/projectTypes.ts",
+      "accessCount": 3,
+      "lastAccessed": 1776833932493,
+      "type": "file"
+    },
+    {
+      "path": "src/app/globals.css",
+      "accessCount": 2,
+      "lastAccessed": 1776831112989,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template1/Template1.module.css",
+      "accessCount": 2,
+      "lastAccessed": 1776831348358,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template1/utils/helpers.ts",
+      "accessCount": 2,
+      "lastAccessed": 1776833592784,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template2/utils/helpers.ts",
+      "accessCount": 2,
+      "lastAccessed": 1776833651759,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template2/components/Navbar.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1776833754655,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template2/sections/Footer.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1776833899268,
+      "type": "file"
+    },
+    {
+      "path": ".agents/skills/make-interfaces-feel-better/SKILL.md",
+      "accessCount": 1,
+      "lastAccessed": 1776830955698,
+      "type": "file"
+    },
+    {
+      "path": ".agents/skills/make-interfaces-feel-better/performance.md",
+      "accessCount": 1,
+      "lastAccessed": 1776830955794,
+      "type": "file"
+    },
+    {
+      "path": ".agents/skills/make-interfaces-feel-better/animations.md",
+      "accessCount": 1,
+      "lastAccessed": 1776830955816,
+      "type": "file"
+    },
+    {
+      "path": ".agents/skills/make-interfaces-feel-better/surfaces.md",
+      "accessCount": 1,
+      "lastAccessed": 1776830955860,
+      "type": "file"
+    },
+    {
+      "path": ".agents/skills/make-interfaces-feel-better/typography.md",
+      "accessCount": 1,
+      "lastAccessed": 1776830955872,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template1/components/NativeShaderCanvas.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1776831050645,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template1/types/projectTypes.ts",
+      "accessCount": 1,
+      "lastAccessed": 1776831050911,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template2/components/ThreeJSBackground.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1776831062373,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template2/sections/SkillsDashboard.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1776831062430,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template2/components/ProjectRow.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1776831062463,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template2/types/data.ts",
+      "accessCount": 1,
+      "lastAccessed": 1776831073220,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template3/sections/Hero.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1776831073272,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template3/sections/Skills.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1776831073316,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template3/Template3.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1776831073330,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template3/Template3.module.css",
+      "accessCount": 1,
+      "lastAccessed": 1776831073362,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template3/sections/Work.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1776831073385,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template2/components/TechMarker.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1776831073439,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template3/sections/Process.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1776831073474,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template3/components/Navbar.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1776831091452,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template3/components/SectionTitle.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1776831091705,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template3/types/projectTypes.ts",
+      "accessCount": 1,
+      "lastAccessed": 1776831091875,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template3/utils/helpers.ts",
+      "accessCount": 1,
+      "lastAccessed": 1776831091899,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template3/components/BentoCard.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1776831091915,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}

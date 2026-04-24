@@ -1,5 +1,22 @@
 <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <g fill="none" stroke="black" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+  <style>
+    @keyframes bgCycle {
+      0%, 100% { fill: transparent; }
+      50% { fill: black; }
+    }
+    @keyframes strokeCycle {
+      0%, 100% { stroke: black; }
+      50% { stroke: white; }
+    }
+    .bg-animate {
+      animation: bgCycle 2s ease-in-out infinite;
+    }
+    .stroke-animate {
+      animation: strokeCycle 2s ease-in-out infinite;
+    }
+  </style>
+  <rect width="100" height="100" rx="16" class="bg-animate"/>
+  <g fill="none" stroke="black" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" class="stroke-animate">
     <path d="M -5 25 Q 25 25 25 -5" />
     <path d="M 55 -5 L 55 25 Q 55 45 80 45 L 105 45" />
     <path d="M 80 45 L 80 20 L 80 -5" />

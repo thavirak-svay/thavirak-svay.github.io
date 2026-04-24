@@ -12,7 +12,7 @@ export const Education = () => (
         </span>
       </div>
       <h3 className="font-display text-3xl font-bold text-white mb-2 text-balance">
-        Bachelor of Management of Information Technology
+        Management Information System
       </h3>
       <div className="font-mono text-lg text-slate-300 mb-4">
         SETEC Institute | Phnom Penh, Cambodia
