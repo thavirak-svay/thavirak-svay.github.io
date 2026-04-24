@@ -25,7 +25,7 @@ const panels = [
   },
 ];
 
-export const SystemsArchitecture = () => {
+export const HowIWork = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const horizontalRef = useRef<HTMLDivElement>(null);
 
@@ -33,16 +33,14 @@ export const SystemsArchitecture = () => {
     if (!sectionRef.current || !horizontalRef.current) return;
 
     const ctx = gsap.context(() => {
-      const panelElements = gsap.utils.toArray(".systems-section");
-
-      gsap.to(horizontalRef.current, {
+      gsap.set(horizontalRef.current!, { width: "max-content" });
+      gsap.to(horizontalRef.current!, {
         x: () => -(horizontalRef.current!.scrollWidth - window.innerWidth),
         ease: "none",
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: () =>
-            `+=${horizontalRef.current!.scrollWidth - window.innerWidth}`,
+          end: () => `+=${horizontalRef.current!.scrollWidth - window.innerWidth}`,
           scrub: true,
           pin: true,
           anticipatePin: 1,

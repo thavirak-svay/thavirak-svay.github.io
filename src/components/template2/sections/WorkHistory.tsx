@@ -96,7 +96,7 @@ export const WorkHistory = () => {
   return (
     <section 
       id="notes" 
-      className="min-h-screen flex items-center justify-center py-16 lg:py-24 px-8 lg:px-16"
+      className="min-h-screen flex items-center justify-center py-16 lg:py-24 px-4 md:px-6 lg:px-8"
       aria-labelledby="work-history-heading"
     >
       <div className="max-w-6xl mx-auto w-full">
@@ -132,7 +132,7 @@ export const WorkHistory = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="relative pl-8 lg:pl-16"
+              className="relative pl-6 md:pl-8 lg:pl-16"
               aria-labelledby={`exp-${exp.id}-heading`}
               role="listitem"
             >
@@ -168,18 +168,18 @@ export const WorkHistory = () => {
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.3, delay: 0.2 }}
-                      className="inline-flex items-center text-[11px] px-2.5 py-1 rounded-sm bg-(--accent)/10 border border-(--accent)/40 text-(--accent) font-medium tracking-wide uppercase"
+                      className="inline-flex items-center text-xs sm:text-sm px-2.5 py-1 rounded-sm bg-(--accent)/10 border border-(--accent)/40 text-(--accent) font-medium tracking-wide uppercase"
                     >
                       Present
                     </motion.span>
                   )}
                 </div>
 
-                <div className="font-body text-sm text-(--muted) mb-4 flex items-center gap-2">
-                  <span className="w-1 h-1 rounded-full bg-(--accent)/40" aria-hidden="true" />
-                  {exp.company}
-                  <span className="text-(--accent)/30 mx-1">·</span>
-                  <span className="text-xs uppercase tracking-wider">{exp.period}</span>
+                <div className="font-body text-sm text-(--muted) mb-4 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+                  <span className="hidden sm:inline w-1 h-1 rounded-full bg-(--accent)/40" aria-hidden="true" />
+                  <span>{exp.company}</span>
+                  <span className="hidden sm:inline text-(--accent)/30 mx-1">·</span>
+                  <span className="text-xs tracking-wider">{exp.period}</span>
                 </div>
 
                 <p className="text-(--text) text-sm md:text-base leading-relaxed mb-6 max-w-[70ch] text-pretty">

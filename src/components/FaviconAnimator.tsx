@@ -7,14 +7,16 @@ export function FaviconAnimator() {
     if (typeof window === 'undefined' || typeof document === 'undefined') return;
 
     const frames = ['/favicon-frame-1.svg', '/favicon-frame-2.svg'];
-    const intervalMs = 2000;
+    const intervalMs = 3000;
 
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     
     if (mediaQuery.matches) {
-      setFavicon('/favicon-frame-1.svg');
+      setFavicon(frames[0]);
       return;
     }
+
+    preloadFrames(frames);
 
     let frameIndex = 0;
     let intervalId: NodeJS.Timeout | null = null;
@@ -26,13 +28,13 @@ export function FaviconAnimator() {
       setFavicon(frames[frameIndex]);
     }, intervalMs);
 
-    const handleChange = (e: MediaQueryListEvent) => {
+    const onMotionPreferenceChange = (e: MediaQueryListEvent) => {
       if (e.matches) {
         if (intervalId) {
           clearInterval(intervalId);
           intervalId = null;
         }
-        setFavicon('/favicon-frame-1.svg');
+        setFavicon(frames[0]);
       } else {
         if (!intervalId) {
           frameIndex = 0;
@@ -45,26 +47,32 @@ export function FaviconAnimator() {
       }
     };
 
-    mediaQuery.addEventListener('change', handleChange);
+    mediaQuery.addEventListener('change', onMotionPreferenceChange);
 
     return () => {
       if (intervalId) clearInterval(intervalId);
-      mediaQuery.removeEventListener('change', handleChange);
+      mediaQuery.removeEventListener('change', onMotionPreferenceChange);
     };
   }, []);
 
   return null;
 }
 
+function preloadFrames(frames: string[]) {
+  frames.forEach(frame => {
+    const img = new Image();
+    img.src = frame;
+  });
+}
+
 function setFavicon(href: string) {
   if (typeof document === 'undefined') return;
-  
-  const existingLinks = document.querySelectorAll('link[rel="icon"]');
-  existingLinks.forEach(link => link.remove());
-  
-  const newLink = document.createElement('link');
-  newLink.rel = 'icon';
-  newLink.type = 'image/svg+xml';
-  newLink.href = href;
-  document.head.appendChild(newLink);
+
+  document.querySelectorAll('link[rel="icon"]').forEach(link => link.remove());
+
+  const link = document.createElement('link');
+  link.rel = 'icon';
+  link.type = 'image/svg+xml';
+  link.href = href + '?v=' + Date.now();
+  document.head.appendChild(link);
 }

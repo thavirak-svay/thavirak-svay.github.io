@@ -70,22 +70,29 @@ export const Skills = () => {
   const experienceYears = useMemo(() => calculateExperienceYears(), []);
 
   return (
-    <section ref={sectionRef} id="skills" className="min-h-screen flex items-center justify-center py-16 lg:py-24 px-8 lg:px-16">
+    <section
+      ref={sectionRef}
+      id="skills"
+      className="min-h-screen flex items-center justify-center py-16 lg:py-24 px-4 md:px-6 lg:px-8"
+    >
       <div className="max-w-6xl mx-auto">
         <div className="font-body text-xs uppercase tracking-widest text-(--muted) mb-16">
           Technical Stack
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[5fr_6fr] gap-8 lg:gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-[5fr_6fr] gap-8 lg:gap-16">
           <div>
-            <h2 className="font-display text-5xl lg:text-7xl font-normal leading-[1.05] tracking-tight text-(--text) text-balance">
+            <h2 className="font-display text-4xl lg:text-5xl font-normal leading-[1.05] tracking-tight text-(--text) text-balance">
               The tools I use to build reliable backend systems.
             </h2>
             <p className="font-body text-lg text-(--muted) leading-relaxed font-light mt-6 text-pretty">
-              Backend Developer with <span className="tabular-nums">{experienceYears}</span>+ years of experience architecting scalable distributed systems 
-              and microservices across fintech, e-commerce, and healthcare. I specialize in building 
-              high-throughput event-driven platforms, designing robust APIs, and optimizing system 
-              performance for enterprise-grade applications.
+              Backend Developer with{" "}
+              <span className="tabular-nums">{experienceYears}</span>+ years of
+              experience architecting scalable distributed systems and
+              microservices across fintech, e-commerce, and healthcare. I
+              specialize in building high-throughput event-driven platforms,
+              designing robust APIs, and optimizing system performance for
+              enterprise-grade applications.
             </p>
           </div>
 

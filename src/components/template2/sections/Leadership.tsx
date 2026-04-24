@@ -65,16 +65,16 @@ export const Leadership = () => {
     <section
       ref={sectionRef}
       id="leadership"
-      className="min-h-screen flex items-center justify-center py-16 lg:py-24 px-8 lg:px-16 bg-(--surface)"
+      className="min-h-screen flex items-center justify-center py-16 lg:py-24 px-4 md:px-6 lg:px-8 bg-(--surface)"
     >
       <div className="max-w-6xl mx-auto">
         <div className="font-body text-xs uppercase tracking-widest text-(--muted) mb-16">
           Leadership & Impact
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[5fr_6fr] gap-8 lg:gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-[5fr_6fr] gap-8 lg:gap-16">
           <div>
-            <h2 className="font-display text-5xl lg:text-7xl font-normal leading-[1.05] tracking-tight text-(--text) text-balance">
+            <h2 className="font-display text-4xl lg:text-5xl font-normal leading-[1.05] tracking-tight text-(--text) text-balance">
               Beyond implementation — leading teams, establishing standards, and
               driving platform success.
             </h2>
@@ -84,8 +84,6 @@ export const Leadership = () => {
               developers to grow and deliver. I've led multiple platform
               initiatives while maintaining and evolving existing systems.
             </p>
-
-            
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

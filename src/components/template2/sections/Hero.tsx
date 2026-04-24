@@ -112,7 +112,11 @@ export const Hero = () => {
   }, []);
 
   return (
-    <section id="hero" ref={heroRef} className="min-h-screen flex items-center pb-[8vh] relative overflow-hidden px-8 lg:px-16 bg-gradient-to-b from-(--bg) via-(--bg) to-(--bg-alt)">
+    <section
+      id="hero"
+      ref={heroRef}
+      className="min-h-screen flex items-center px-4 md:px-6 lg:px-8 pb-6 md:pb-8 lg:pb-[8vh] relative overflow-hidden bg-gradient-to-b from-(--bg) via-(--bg) to-(--bg-alt)"
+    >
       <div className="max-w-4xl mx-auto w-full relative z-10">
         <h1
           ref={headlineRef}
@@ -136,7 +140,7 @@ export const Hero = () => {
           </span>
         </h1>
 
-        <div ref={subRef} className="max-w-[550px]">
+        <div ref={subRef} className="max-w-[550px] px-4">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -160,7 +164,7 @@ export const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 1.3, ease: "easeOut" }}
             >
-              Read what I learned building them
+              View my work history
             </motion.a>
           </div>
         </div>

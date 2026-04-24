@@ -40,20 +40,20 @@ export const Footer = () => {
         className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 pb-16 md:pb-24 border-b border-(--border)"
       >
         <div>
-          <p className="font-body text-[11px] uppercase tracking-[0.15em] text-(--muted) mb-4">
+          <p className="font-body text-xs sm:text-sm uppercase tracking-[0.15em] text-(--muted) mb-4">
             Location
           </p>
-          <div className="font-body text-[15px] leading-relaxed text-(--text)">
+          <div className="font-body text-base sm:text-lg leading-relaxed text-(--text)">
             <p>Phnom Penh</p>
             <p>Cambodia</p>
           </div>
         </div>
 
         <div>
-          <p className="font-body text-[11px] uppercase tracking-[0.15em] text-(--muted) mb-4">
+          <p className="font-body text-xs sm:text-sm uppercase tracking-[0.15em] text-(--muted) mb-4">
             Contact
           </p>
-          <div className="font-body text-[15px] leading-relaxed">
+          <div className="font-body text-base leading-relaxed">
             <a
               href="tel:+85570933433"
               className="block text-(--text) hover:text-(--accent) transition-colors duration-300 mb-1"
@@ -69,7 +69,7 @@ thaavirak@gmail.com
           </div>
         </div>
         <div>
-          <p className="font-body text-[11px] uppercase tracking-[0.15em] text-(--muted) mb-4">
+          <p className="font-body text-xs sm:text-sm uppercase tracking-[0.15em] text-(--muted) mb-4">
             Follow
           </p>
           <div className="flex flex-col gap-1">
@@ -79,7 +79,7 @@ thaavirak@gmail.com
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-1 font-body text-[15px] text-(--text) hover:text-(--accent) transition-colors duration-300"
+                className="group flex items-center gap-1 font-body text-base text-(--text) hover:text-(--accent) transition-colors duration-300"
               >
                 {link.name}
                 <ArrowUpRight
@@ -100,7 +100,7 @@ thaavirak@gmail.com
         className="flex flex-col md:flex-row gap-8 md:gap-16 py-16 md:py-24"
       >
         <div className="md:w-32 shrink-0">
-          <p className="font-body text-[11px] uppercase tracking-[0.15em] text-(--muted)">
+          <p className="font-body text-xs sm:text-sm uppercase tracking-[0.15em] text-(--muted)">
             Navigation
           </p>
         </div>
@@ -110,14 +110,14 @@ thaavirak@gmail.com
               <span key={link.name} className="flex items-center">
                 <button
                   onClick={() => scrollToSection(link.href)}
-                  className="font-display text-[clamp(3rem,10vw,7rem)] font-normal leading-[0.9] tracking-[-0.02em] text-(--text) hover:text-(--accent) transition-colors duration-300 cursor-pointer"
+                  className="font-display text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-normal leading-[0.9] tracking-[-0.02em] text-(--text) hover:text-(--accent) transition-colors duration-300 cursor-pointer"
                 >
                   {link.name}
                 </button>
                 {index < navLinks.length - 1 && (
-                  <span className="font-display text-[clamp(3rem,10vw,7rem)] font-normal leading-[0.9] tracking-[-0.02em] text-(--muted) mx-2">
-                    /
-                  </span>
+                <span className="font-display text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-normal leading-[0.9] tracking-[-0.02em] text-(--muted) mx-2">
+                  /
+                </span>
                 )}
               </span>
             ))}

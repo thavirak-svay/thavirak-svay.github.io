@@ -100,8 +100,8 @@ const projects: Project[] = [
 // Animated project row with staged reveal
 const ProjectRow = ({ project, index }: { project: Project; index: number }) => {
   return (
-    <motion.div
-      className="project-row py-8 lg:py-16 grid grid-cols-1 lg:grid-cols-[1fr_3fr] gap-8 lg:gap-16"
+      <motion.div
+        className="project-row py-8 lg:py-16 grid grid-cols-1 md:grid-cols-[1fr_2fr] lg:grid-cols-[1fr_3fr] gap-8 lg:gap-16"
       style={{ boxShadow: 'inset 0 1px 0 rgba(0, 0, 0, 0.06)' }}
       variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } }}
     >
@@ -159,27 +159,30 @@ const ProjectRow = ({ project, index }: { project: Project; index: number }) => 
         <motion.div variants={{ hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0 } }}>
           <div className="font-body text-xs uppercase tracking-widest text-(--muted) mb-2">Impact</div>
           <p className="font-body text-sm text-(--text) leading-relaxed text-pretty">{project.metrics.impact}</p>
-          <div className="font-body text-xs uppercase tracking-widest text-(--muted) mt-4 flex flex-wrap gap-x-2 gap-y-1">
-            {project.tags.map((tag, idx) => (
-              <motion.span
-                key={tag}
-                initial={{ opacity: 0, scale: 0.95, filter: "blur(1px)" }}
-                whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                viewport={{ once: true }}
-                transition={{
-                  type: "spring",
-                  duration: 0.3,
-                  bounce: 0,
-                  delay: idx * 0.03,
-                }}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="inline-flex"
-              >
-                {tag}
-                {idx < project.tags.length - 1 && <span className="mx-1 opacity-40">·</span>}
-              </motion.span>
-            ))}
+          <div className="mt-4">
+            <div className="font-body text-xs uppercase tracking-widest text-(--muted) mb-2">Tech Stack</div>
+            <div className="font-body text-xs flex flex-wrap gap-x-2 gap-y-1">
+              {project.tags.map((tag, idx) => (
+                <motion.span
+                  key={tag}
+                  initial={{ opacity: 0, scale: 0.95, filter: "blur(1px)" }}
+                  whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                  viewport={{ once: true }}
+                  transition={{
+                    type: "spring",
+                    duration: 0.3,
+                    bounce: 0,
+                    delay: idx * 0.03,
+                  }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="inline-flex text-(--accent)"
+                >
+                  {tag}
+                  {idx < project.tags.length - 1 && <span className="mx-1 opacity-40">·</span>}
+                </motion.span>
+              ))}
+            </div>
           </div>
         </motion.div>
       </motion.div>
@@ -187,9 +190,9 @@ const ProjectRow = ({ project, index }: { project: Project; index: number }) => 
   );
 };
 
-export const SelectedSystems = () => {
+export const EnterpriseSystems = () => {
   return (
-    <section id="work" className="py-16 lg:py-24 px-8 lg:px-16">
+    <section id="work" className="lg:min-h-screen py-16 lg:py-24 px-4 md:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -198,7 +201,7 @@ export const SelectedSystems = () => {
           transition={{ duration: 0.5 }}
           className="font-body text-xs uppercase tracking-widest text-(--muted) mb-16"
         >
-          Selected Systems
+          Enterprise Systems
         </motion.div>
 
         <motion.div

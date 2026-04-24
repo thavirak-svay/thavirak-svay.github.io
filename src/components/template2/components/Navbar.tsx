@@ -53,7 +53,7 @@ export const Navbar = () => {
 
            
           <button
-            className="md:hidden relative w-10 h-10 flex items-center justify-center text-(--text-dark) hover:text-(--accent) active:scale-[0.96] transition-[color,transform] duration-150 ease-out"
+            className="md:hidden relative w-11 h-11 min-h-[44px] min-w-[44px] flex items-center justify-center text-(--text-dark) hover:text-(--accent) active:scale-[0.96] transition-[color,transform] duration-150 ease-out"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             <motion.span
@@ -88,13 +88,13 @@ export const Navbar = () => {
             transition={{ duration: 0.2 }}
             className="fixed inset-0 z-40 bg-(--navbar-bg) pt-24 px-6 md:hidden flex flex-col"
           >
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-8">
               {navItems.map((item) => (
                 <a
                   key={item.anchor}
                   href={`#${item.anchor}`}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-2xl font-display font-bold text-(--text-dark) hover:text-(--accent) active:scale-[0.96] transition-[color,transform] duration-150 ease-out"
+                  className="text-2xl font-display font-bold text-(--text-dark) hover:text-(--accent) active:scale-[0.96] transition-[color,transform] duration-150 ease-out py-4 min-h-[44px] flex items-center"
                 >
                   {item.label}
                 </a>
@@ -102,7 +102,7 @@ export const Navbar = () => {
               <a
                 href="mailto:thaavirak@gmail.com"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="mt-4 px-6 py-3 bg-(--text-dark) text-(--white) font-display font-bold text-center active:scale-[0.96] transition-transform duration-150 ease-out hover:bg-(--accent)"
+                className="mt-4 px-6 py-3 min-h-[44px] min-w-[44px] bg-(--text-dark) text-(--white) font-display font-bold text-center active:scale-[0.96] transition-transform duration-150 ease-out hover:bg-(--accent)"
               >
                 Contact
               </a>

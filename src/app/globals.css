@@ -297,11 +297,42 @@ html {
   flex-shrink: 0;
 }
 
-/* Philosophy Fullscreen - Horizontal Scroll Section */
-.philosophy-fullscreen-container {
-  overflow: hidden;
-  height: 100vh;
-  background-color: var(--bg);
+
+
+/* Mobile-first typography: WCAG minimum 16px for readability */
+html {
+  font-size: 16px;
+}
+
+/* Fluid scaling for larger viewports */
+@media (min-width: 768px) {
+  html {
+    font-size: clamp(16px, 1.6vw, 20px);
+  }
+}
+
+@media (max-width: 767px) {
+  html {
+    font-size: 16px;
+  }
+  
+  .text-xs,
+  [class*="text-xs"],
+  .text-sm {
+    font-size: 14px !important;
+  }
+  
+  .text-\[11px\],
+  [class*="text-\[11px\]"],
+  .text-\[12px\],
+  [class*="text-\[12px\]"],
+  .text-\[13px\],
+  [class*="text-\[13px\]"],
+  .text-\[14px\],
+  [class*="text-\[14px\]"],
+  .text-\[15px\] {
+    font-size: 16px !important;
+  }
 }
 
 .philosophy-fullscreen-panel {
