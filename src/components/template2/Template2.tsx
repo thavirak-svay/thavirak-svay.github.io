@@ -11,11 +11,9 @@ gsap.registerPlugin(ScrollTrigger);
 // Import all components
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./sections/Hero";
-import { Projects } from "./sections/Projects";
+import { SelectedSystems } from "./sections/SelectedSystems";
 import { Skills } from "./sections/Skills";
 import { SystemsArchitecture } from "./sections/SystemsArchitecture";
-
-
 import { WorkHistory } from "./sections/WorkHistory";
 import { Leadership } from "./sections/Leadership";
 import { Footer } from "./sections/Footer";
@@ -36,7 +34,7 @@ const Template2 = () => {
       <Navbar />
       <main>
         <Hero />
-        <Projects />
+        <SelectedSystems />
         <Skills />
         <SystemsArchitecture />
         <WorkHistory />

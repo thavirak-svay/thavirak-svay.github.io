@@ -187,7 +187,7 @@ const ProjectRow = ({ project, index }: { project: Project; index: number }) => 
   );
 };
 
-export const Projects = () => {
+export const SelectedSystems = () => {
   return (
     <section id="work" className="py-16 lg:py-24 px-8 lg:px-16">
       <div className="max-w-6xl mx-auto">
