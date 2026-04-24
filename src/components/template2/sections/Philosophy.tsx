@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion } from "framer-motion";
-import { ScrollRevealItem } from "../hooks/useScrollRevealOnce";
+import { ScrollRevealItem } from "../hooks/ScrollRevealItem";
 import { Database, Layers, Zap, Shield, GitBranch, Server } from "lucide-react";
 
 const principles = [

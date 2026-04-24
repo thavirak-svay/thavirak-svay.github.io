@@ -8,7 +8,7 @@ import { NativeShaderCanvas } from "./components/NativeShaderCanvas";
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./sections/Hero";
 import { EngineeringPhilosophy } from "./sections/EngineeringPhilosophy";
-import { BentoGrid } from "./sections/BentoGrid";
+import { CoreCompetencies } from "./sections/CoreCompetencies";
 import { ExperienceTimeline } from "./sections/ExperienceTimeline";
 import { Education } from "./sections/Education";
 import { SelectedWorks } from "./sections/SelectedWorks";
@@ -30,7 +30,7 @@ const Template1 = () => {
         <Navbar />
         <Hero />
         <EngineeringPhilosophy />
-        <BentoGrid />
+        <CoreCompetencies />
         <ExperienceTimeline />
         <Education />
         <SelectedWorks />

@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useMemo } from "react";
-import { ScrollRevealItem } from "../hooks/useScrollRevealOnce";
+import { ScrollRevealItem } from "../hooks/ScrollRevealItem";
 import { calculateExperienceYears } from "../utils/helpers";
 
 const skillCategories = [

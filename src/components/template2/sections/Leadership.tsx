@@ -9,7 +9,7 @@ import {
   CheckCircle2,
   ArrowRight,
 } from "lucide-react";
-import { ScrollRevealItem } from "../hooks/useScrollRevealOnce";
+import { ScrollRevealItem } from "../hooks/ScrollRevealItem";
 
 const leadershipAreas = [
   {

@@ -92,7 +92,7 @@ const education: Education[] = [
   { id: "setec", institution: "SETEC Institute", degree: "Management Information System", period: "2018 – 2022" },
 ];
 
-export const NotesHistory = () => {
+export const WorkHistory = () => {
   return (
     <section 
       id="notes" 

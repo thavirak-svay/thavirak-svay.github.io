@@ -16,7 +16,7 @@ import { Skills } from "./sections/Skills";
 import { SystemsArchitecture } from "./sections/SystemsArchitecture";
 
 
-import { NotesHistory } from "./sections/NotesHistory";
+import { WorkHistory } from "./sections/WorkHistory";
 import { Leadership } from "./sections/Leadership";
 import { Footer } from "./sections/Footer";
 
@@ -39,7 +39,7 @@ const Template2 = () => {
         <Projects />
         <Skills />
         <SystemsArchitecture />
-        <NotesHistory />
+        <WorkHistory />
         <Leadership />
         <Footer />
       </main>

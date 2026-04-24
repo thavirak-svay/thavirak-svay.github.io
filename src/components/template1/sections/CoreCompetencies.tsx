@@ -7,7 +7,7 @@ import styles from "../Template1.module.css";
 import { StatCard } from "../components/AnimatedStats";
 import { calculateExperienceYears } from "../utils/helpers";
 
-export const BentoGrid = () => {
+export const CoreCompetencies = () => {
   const experienceYears = useMemo(() => calculateExperienceYears(), []);
 
   const features = [

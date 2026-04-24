@@ -35,7 +35,7 @@ const MagneticBtn = ({ children, href, className }: { children: React.ReactNode;
   );
 };
 
-export const FooterCTA = () => {
+export const ContactCTA = () => {
   const currentYear = new Date().getFullYear();
 
   return (
