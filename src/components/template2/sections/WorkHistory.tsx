@@ -27,8 +27,7 @@ const experiences: Experience[] = [
     company: "Wing Bank (Cambodia) Plc",
     role: "Backend Developer",
     period: "October 2022 – Present",
-    desc:
-      "Core contributor and lead developer on multiple banking and commerce platforms. Architected and maintained systems for payment processing, e-commerce, inventory management, and API governance across Wing Bank's digital ecosystem.",
+    desc: "Core contributor and lead developer on multiple banking and commerce platforms. Architected and maintained systems for payment processing, e-commerce, inventory management, and API governance across Wing Bank's digital ecosystem.",
     responsibilities: [
       "Currently developing KHQR Invoicing — payment QR code generation system for merchants and personal users",
       "Lead development of CMDB platform — centralized inventory tracking servers, apps, databases, network devices with automated sync from monitoring tools",
@@ -54,14 +53,18 @@ const experiences: Experience[] = [
     company: "Web Essentials Co., Ltd",
     role: "Web Developer",
     period: "February 2022 – October 2022",
-    desc:
-      "Maintained and enhanced global identity verification platform focused on PEP (Politically Exposed Persons) screening and high-profile individual checks, built with NuxtJS frontend and GoLang backend.",
+    desc: "Maintained and enhanced global identity verification platform focused on PEP (Politically Exposed Persons) screening and high-profile individual checks, built with NuxtJS frontend and GoLang backend.",
     responsibilities: [
       "Maintained identity verification platform for PEP screening and high-profile individual checks — integrated KYC/AML APIs using NuxtJS and GoLang",
       "Shipped new features and optimized both backend and frontend performance",
       "Collaborated with international remote team to ensure high-quality software delivery",
     ],
-    stack: ["NuxtJS", "GoLang", "KYC/AML APIs", "Identity Verification Systems"],
+    stack: [
+      "NuxtJS",
+      "GoLang",
+      "KYC/AML APIs",
+      "Identity Verification Systems",
+    ],
     highlight: false,
   },
   {
@@ -69,8 +72,7 @@ const experiences: Experience[] = [
     company: "Udaya Technology Co., Ltd",
     role: "Software Developer",
     period: "November 2019 – February 2022",
-    desc:
-      "Developed multiple enterprise solutions including payroll management for logistics, real-time fleet tracking systems, and Electronic Medical Records (EMR) deployed across government hospitals.",
+    desc: "Developed multiple enterprise solutions including payroll management for logistics, real-time fleet tracking systems, and Electronic Medical Records (EMR) deployed across government hospitals.",
     responsibilities: [
       "Built payroll system handling 1,000+ employees for logistics company — salary computation, leave management, performance reviews",
       "Developed Fleet Management System — real-time tracking dashboard, zone management, vehicle and driver management",
@@ -89,13 +91,18 @@ const experiences: Experience[] = [
 ];
 
 const education: Education[] = [
-  { id: "setec", institution: "SETEC Institute", degree: "Management Information System", period: "2018 – 2022" },
+  {
+    id: "setec",
+    institution: "SETEC Institute",
+    degree: "Management Information System",
+    period: "2018 – 2022",
+  },
 ];
 
 export const WorkHistory = () => {
   return (
-    <section 
-      id="notes" 
+    <section
+      id="notes"
       className="min-h-screen flex items-center justify-center py-16 lg:py-24 px-4 md:px-6 lg:px-8"
       aria-labelledby="work-history-heading"
     >
@@ -120,11 +127,11 @@ export const WorkHistory = () => {
           aria-label="Work experience timeline"
         >
           {/* Timeline vertical line - visible on all breakpoints for continuity */}
-          <div 
+          <div
             className="absolute left-[8px] top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-(--accent)/30 to-transparent"
             aria-hidden="true"
           />
-          
+
           {experiences.map((exp, i) => (
             <motion.article
               key={exp.id}
@@ -162,23 +169,17 @@ export const WorkHistory = () => {
                   >
                     {exp.role}
                   </h3>
-                  {exp.highlight && (
-                    <motion.span
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.3, delay: 0.2 }}
-                      className="inline-flex items-center text-xs sm:text-sm px-2.5 py-1 rounded-sm bg-(--accent)/10 border border-(--accent)/40 text-(--accent) font-medium tracking-wide uppercase"
-                    >
-                      Present
-                    </motion.span>
-                  )}
                 </div>
 
                 <div className="font-body text-sm text-(--muted) mb-4 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
-                  <span className="hidden sm:inline w-1 h-1 rounded-full bg-(--accent)/40" aria-hidden="true" />
+                  <span
+                    className="hidden sm:inline w-1 h-1 rounded-full bg-(--accent)/40"
+                    aria-hidden="true"
+                  />
                   <span>{exp.company}</span>
-                  <span className="hidden sm:inline text-(--accent)/30 mx-1">·</span>
+                  <span className="hidden sm:inline text-(--accent)/30 mx-1">
+                    ·
+                  </span>
                   <span className="text-xs tracking-wider">{exp.period}</span>
                 </div>
 
@@ -212,9 +213,18 @@ export const WorkHistory = () => {
                     <motion.span
                       key={`${exp.id}-stack-${idx}`}
                       initial={{ opacity: 0, scale: 0.85, filter: "blur(2px)" }}
-                      whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                      whileInView={{
+                        opacity: 1,
+                        scale: 1,
+                        filter: "blur(0px)",
+                      }}
                       viewport={{ once: true }}
-                      transition={{ type: "spring", duration: 0.3, bounce: 0, delay: idx * 0.05 }}
+                      transition={{
+                        type: "spring",
+                        duration: 0.3,
+                        bounce: 0,
+                        delay: idx * 0.05,
+                      }}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       className={styles.techTag}
@@ -255,7 +265,9 @@ export const WorkHistory = () => {
               >
                 {e.institution}
               </h4>
-              <span className="font-body text-sm text-(--muted)">{e.degree}</span>
+              <span className="font-body text-sm text-(--muted)">
+                {e.degree}
+              </span>
               <span className="text-xs uppercase tracking-widest text-(--muted)">
                 {e.period}
               </span>
