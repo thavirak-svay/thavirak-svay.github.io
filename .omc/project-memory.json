@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1776830480656,
+  "lastScanned": 1777264801035,
   "projectRoot": "/Users/thavirak.svay/personal/thavirak-svay.github.io",
   "techStack": {
     "languages": [
@@ -76,31 +76,44 @@
   },
   "customNotes": [],
   "directoryMap": {
+    "out": {
+      "path": "out",
+      "purpose": "Build output",
+      "fileCount": 19,
+      "lastAccessed": 1777264801007,
+      "keyFiles": [
+        "404.html",
+        "__next.__PAGE__.txt",
+        "__next._full.txt",
+        "__next._head.txt",
+        "__next._index.txt"
+      ]
+    },
     "public": {
       "path": "public",
       "purpose": "Public files",
-      "fileCount": 6,
-      "lastAccessed": 1776830480618,
+      "fileCount": 9,
+      "lastAccessed": 1777264801014,
       "keyFiles": [
+        "favicon-frame-1.svg",
+        "favicon-frame-2.svg",
+        "favicon.svg",
         "file.svg",
-        "globe.svg",
-        "next.svg",
-        "vercel.svg",
-        "window.svg"
+        "globe.svg"
       ]
     },
     "src": {
       "path": "src",
       "purpose": "Source code",
       "fileCount": 0,
-      "lastAccessed": 1776830480626,
+      "lastAccessed": 1777264801014,
       "keyFiles": []
     },
     "src/app": {
       "path": "src/app",
       "purpose": "Application code",
       "fileCount": 7,
-      "lastAccessed": 1776830480628,
+      "lastAccessed": 1777264801016,
       "keyFiles": [
         "apple-icon.svg",
         "favicon.ico",
@@ -110,9 +123,11 @@
     "src/components": {
       "path": "src/components",
       "purpose": "UI components",
-      "fileCount": 0,
-      "lastAccessed": 1776830480628,
-      "keyFiles": []
+      "fileCount": 1,
+      "lastAccessed": 1777264801016,
+      "keyFiles": [
+        "FaviconAnimator.tsx"
+      ]
     }
   },
   "hotPaths": [
@@ -129,6 +144,12 @@
       "type": "file"
     },
     {
+      "path": "src/components/template2/sections/Hero.tsx",
+      "accessCount": 11,
+      "lastAccessed": 1777265594550,
+      "type": "file"
+    },
+    {
       "path": "src/components/template1/components/ProjectCard.tsx",
       "accessCount": 9,
       "lastAccessed": 1776831601969,
@@ -141,6 +162,12 @@
       "type": "file"
     },
     {
+      "path": "src/components/template2/sections/Footer.tsx",
+      "accessCount": 8,
+      "lastAccessed": 1777265593493,
+      "type": "file"
+    },
+    {
       "path": "src/components/template2/sections/Projects.tsx",
       "accessCount": 7,
       "lastAccessed": 1776834377783,
@@ -148,26 +175,26 @@
     },
     {
       "path": "src/components/template1/sections/ExperienceTimeline.tsx",
+      "accessCount": 7,
+      "lastAccessed": 1777264875537,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template2/components/Navbar.tsx",
+      "accessCount": 7,
+      "lastAccessed": 1777265592217,
+      "type": "file"
+    },
+    {
+      "path": "src/components/template2/Template2.tsx",
       "accessCount": 6,
-      "lastAccessed": 1776833592638,
+      "lastAccessed": 1777265242917,
       "type": "file"
     },
     {
       "path": "src/components/template2/sections/Experience.tsx",
       "accessCount": 5,
       "lastAccessed": 1776834009229,
-      "type": "file"
-    },
-    {
-      "path": "src/components/template2/sections/Hero.tsx",
-      "accessCount": 5,
-      "lastAccessed": 1776834293815,
-      "type": "file"
-    },
-    {
-      "path": "src/components/template2/Template2.tsx",
-      "accessCount": 5,
-      "lastAccessed": 1776834443660,
       "type": "file"
     },
     {
@@ -264,18 +291,6 @@
       "path": "src/components/template2/utils/helpers.ts",
       "accessCount": 2,
       "lastAccessed": 1776833651759,
-      "type": "file"
-    },
-    {
-      "path": "src/components/template2/components/Navbar.tsx",
-      "accessCount": 2,
-      "lastAccessed": 1776833754655,
-      "type": "file"
-    },
-    {
-      "path": "src/components/template2/sections/Footer.tsx",
-      "accessCount": 2,
-      "lastAccessed": 1776833899268,
       "type": "file"
     },
     {

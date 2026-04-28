@@ -54,7 +54,7 @@ export const HowIWork = () => {
 
   return (
     <section
-      id="systems"
+      id="how-i-work"
       ref={sectionRef}
       className="systems-container"
       aria-label="What I've Learned - Backend Development Experience"

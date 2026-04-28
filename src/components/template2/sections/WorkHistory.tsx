@@ -102,7 +102,7 @@ const education: Education[] = [
 export const WorkHistory = () => {
   return (
     <section
-      id="notes"
+      id="experience"
       className="min-h-screen flex items-center justify-center py-16 lg:py-24 px-4 md:px-6 lg:px-8"
       aria-labelledby="work-history-heading"
     >
@@ -148,7 +148,7 @@ export const WorkHistory = () => {
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.1 + 0.1 }}
-                className="absolute left-[4px] lg:left-[8px] top-[28px] w-3 h-3 flex items-center justify-center"
+                className="absolute left-[4px] lg:left-[8px] top-[32px] w-3 h-3 flex items-center justify-center"
                 aria-hidden="true"
               >
                 <div
@@ -169,6 +169,32 @@ export const WorkHistory = () => {
                   >
                     {exp.role}
                   </h3>
+                </div>
+
+                <div className="flex flex-wrap gap-2 mb-3">
+                  {exp.stack.map((s, idx) => (
+                    <motion.span
+                      key={`${exp.id}-stack-${idx}`}
+                      initial={{ opacity: 0, scale: 0.85, filter: "blur(2px)" }}
+                      whileInView={{
+                        opacity: 1,
+                        scale: 1,
+                        filter: "blur(0px)",
+                      }}
+                      viewport={{ once: true }}
+                      transition={{
+                        type: "spring",
+                        duration: 0.3,
+                        bounce: 0,
+                        delay: idx * 0.05,
+                      }}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className={styles.techTag}
+                    >
+                      {s}
+                    </motion.span>
+                  ))}
                 </div>
 
                 <div className="font-body text-sm text-(--muted) mb-4 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
@@ -207,32 +233,6 @@ export const WorkHistory = () => {
                     </motion.li>
                   ))}
                 </ul>
-
-                <div className="flex flex-wrap gap-2">
-                  {exp.stack.map((s, idx) => (
-                    <motion.span
-                      key={`${exp.id}-stack-${idx}`}
-                      initial={{ opacity: 0, scale: 0.85, filter: "blur(2px)" }}
-                      whileInView={{
-                        opacity: 1,
-                        scale: 1,
-                        filter: "blur(0px)",
-                      }}
-                      viewport={{ once: true }}
-                      transition={{
-                        type: "spring",
-                        duration: 0.3,
-                        bounce: 0,
-                        delay: idx * 0.05,
-                      }}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className={styles.techTag}
-                    >
-                      {s}
-                    </motion.span>
-                  ))}
-                </div>
               </div>
             </motion.article>
           ))}
@@ -278,7 +278,7 @@ export const WorkHistory = () => {
 
       <style jsx global>{`
         @media (prefers-reduced-motion: reduce) {
-          #notes * {
+          #experience * {
             animation-duration: 0.01ms !important;
             animation-iteration-count: 1 !important;
             transition-duration: 0.01ms !important;

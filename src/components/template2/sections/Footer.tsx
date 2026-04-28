@@ -4,13 +4,13 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
 const navLinks = [
-  { name: "Home", href: "#hero" },
+  { name: "Home", href: "#home" },
   { name: "Work", href: "#work" },
   { name: "Skills", href: "#skills" },
-  { name: "Experience", href: "#notes" },
+  { name: "Experience", href: "#experience" },
   { name: "Leadership", href: "#leadership" },
-  { name: "How I Work", href: "#systems" },
-  { name: "Contact", href: "#footer" },
+  { name: "How I Work", href: "#how-i-work" },
+  { name: "Contact", href: "#contact" },
 ];
 
 const socialLinks = [
@@ -31,7 +31,7 @@ export const Footer = () => {
   };
 
   return (
-    <footer id="footer" className="w-full px-6 md:px-12 lg:px-20 py-16 md:py-24">
+    <footer id="contact" className="w-full px-6 md:px-12 lg:px-20 py-16 md:py-24">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}

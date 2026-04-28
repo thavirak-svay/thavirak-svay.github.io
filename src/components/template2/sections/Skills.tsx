@@ -83,16 +83,10 @@ export const Skills = () => {
         <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-[5fr_6fr] gap-8 lg:gap-16">
           <div>
             <h2 className="font-display text-4xl lg:text-5xl font-normal leading-[1.05] tracking-tight text-(--text) text-balance">
-              The tools I use to build reliable backend systems.
+              The tools I use to build reliable and robust systems.
             </h2>
             <p className="font-body text-lg text-(--muted) leading-relaxed font-light mt-6 text-pretty">
-              Backend Developer with{" "}
-              <span className="tabular-nums">{experienceYears}</span>+ years of
-              experience architecting scalable distributed systems and
-              microservices across fintech, e-commerce, and healthcare. I
-              specialize in building high-throughput event-driven platforms,
-              designing robust APIs, and optimizing system performance for
-              enterprise-grade applications.
+              <strong className="font-medium text-(--text)">Hands-on with full-stack development</strong> — from <strong className="font-medium text-(--text)">backend APIs</strong> to <strong className="font-medium text-(--text)">frontend interfaces</strong>. Focus on building <strong className="font-medium text-(--text)">reliable systems</strong> that <strong className="font-medium text-(--text)">scale under real-world load</strong>, not just technical demos.
             </p>
           </div>
 
@@ -112,9 +106,6 @@ export const Skills = () => {
                     <div key={skill.name} className="flex items-center gap-4">
                       <span className="font-body text-sm text-(--accent) font-medium">
                         {skill.name}
-                      </span>
-                      <span className="font-body text-xs text-(--muted) px-2 py-0.5 rounded bg-(--surface) tabular-nums">
-                        {skill.years}
                       </span>
                     </div>
                   ))}

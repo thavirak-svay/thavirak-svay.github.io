@@ -10,9 +10,9 @@ export const Navbar = () => {
   const navItems = [
     { label: "Work", anchor: "work" },
     { label: "Skills", anchor: "skills" },
-    { label: "Experience", anchor: "notes" },
+    { label: "Experience", anchor: "experience" },
     { label: "Leadership", anchor: "leadership" },
-    { label: "How I Work", anchor: "systems" },
+    { label: "How I Work", anchor: "how-i-work" },
   ];
 
   return (

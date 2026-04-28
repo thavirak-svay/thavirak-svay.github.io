@@ -75,14 +75,11 @@ export const Leadership = () => {
         <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-[5fr_6fr] gap-8 lg:gap-16">
           <div>
             <h2 className="font-display text-4xl lg:text-5xl font-normal leading-[1.05] tracking-tight text-(--text) text-balance">
-              Beyond implementation — leading teams, establishing standards, and
-              driving platform success.
+              Beyond coding — leading teams, establishing standards, and driving
+              platform success.
             </h2>
             <p className="font-body text-lg text-(--muted) leading-relaxed font-light mt-6 text-pretty">
-              Technical leadership is about enabling others, not directing them.
-              I set clear standards, remove blockers, and create space for
-              developers to grow and deliver. I've led multiple platform
-              initiatives while maintaining and evolving existing systems.
+              Technical leadership is about <strong className="font-medium text-(--text)">enabling others</strong>, not directing them. I set <strong className="font-medium text-(--text)">clear standards</strong>, <strong className="font-medium text-(--text)">remove blockers</strong>, and create space for developers to <strong className="font-medium text-(--text)">grow and deliver</strong>. I've led multiple <strong className="font-medium text-(--text)">platform initiatives</strong> while <strong className="font-medium text-(--text)">maintaining and evolving</strong> existing systems.
             </p>
           </div>
 
