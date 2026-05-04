@@ -120,7 +120,7 @@ export const Hero = () => {
       <div className="max-w-4xl mx-auto w-full relative z-10">
         <h1
           ref={headlineRef}
-          className="font-display text-5xl md:text-[clamp(2rem,5vw,4.5rem)] font-normal leading-[1.1] tracking-tight text-(--text) mb-10"
+          className="font-display text-4xl md:text-[clamp(2rem,5vw,4.5rem)] font-normal leading-[1.1] tracking-tight text-(--text) mb-10"
         >
           <span className="hero-line-1 block mb-1">
             <span className="hero-word inline-block mr-[0.15em]">Hi,</span>
