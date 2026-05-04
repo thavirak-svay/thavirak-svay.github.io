@@ -104,7 +104,7 @@ export const Navbar = () => {
                 href="/resume.pdf"
                 target="_blank"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="mt-4 px-6 py-3 min-h-[44px] min-w-[44px] bg-(--text-dark) text-(--white) font-display font-bold text-center active:scale-[0.96] transition-transform duration-150 ease-out hover:bg-(--accent)"
+                className="mt-4 w-full px-6 py-3 min-h-[44px] bg-(--text-dark) text-(--white) font-display font-bold text-center active:scale-[0.96] transition-transform duration-150 ease-out hover:bg-(--accent)"
               >
                 Resume
               </a>

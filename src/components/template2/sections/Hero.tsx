@@ -115,7 +115,7 @@ export const Hero = () => {
     <section
       id="home"
       ref={heroRef}
-      className="min-h-screen flex items-center px-4 md:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-b from-(--bg) via-(--bg) to-(--bg-alt)"
+      className="min-h-screen flex items-start pt-24 md:pt-32 lg:pt-40 px-4 md:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-b from-(--bg) via-(--bg) to-(--bg-alt)"
     >
       <div className="max-w-4xl mx-auto w-full relative z-10">
         <h1
@@ -140,7 +140,7 @@ export const Hero = () => {
           </span>
         </h1>
 
-        <div ref={subRef} className="max-w-[550px] px-4">
+        <div ref={subRef} className="w-full max-w-[550px]">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -150,7 +150,7 @@ export const Hero = () => {
             <strong className="font-medium text-(--text)">Backend Developer</strong> with <span className="tabular-nums">{experienceYears}</span>+ years of experience architecting <strong className="font-medium text-(--text)">scalable distributed systems</strong> and <strong className="font-medium text-(--text)">microservices</strong> across <strong className="font-medium text-(--text)">fintech, e-commerce, and healthcare</strong>. Hands-on experience with various <strong className="font-medium text-(--text)">backend and frontend technologies</strong>, designing robust APIs, and optimizing system performance for enterprise-grade applications.
           </motion.p>
 
-          <div className="flex gap-6 items-center flex-wrap">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start sm:items-center">
             <MagneticBtn
               href="#work"
               className="inline-block py-3 px-8 bg-(--text) text-(--bg) font-medium text-sm tracking-wide active:scale-[0.96] transition-transform duration-150"
