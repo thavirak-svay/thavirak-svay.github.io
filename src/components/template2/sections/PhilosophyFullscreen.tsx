@@ -15,7 +15,7 @@ export const PhilosophyFullscreen = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="font-display text-[clamp(2.5rem,8vw,8rem)] font-normal leading-[1.0] tracking-tight text-(--text) text-balance">
+          <h2 className="font-display text-[clamp(2rem,6vw,5rem)] font-normal leading-[1.0] tracking-tight text-(--text) text-balance">
             I build systems that
             <span className="text-(--accent)"> handle chaos</span>
             <br />

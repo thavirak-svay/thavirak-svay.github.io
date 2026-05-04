@@ -123,7 +123,7 @@ const ProjectRow = ({ project, index }: { project: Project; index: number }) => 
         variants={{ hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0 } }}
         transition={{ type: "spring", duration: 0.3, bounce: 0, delay: index * 0.04 }}
       >
-        <h3 className="font-display text-3xl lg:text-5xl font-normal tracking-tight text-(--text) text-balance">
+        <h3 className="font-display text-3xl lg:text-4xl font-normal tracking-tight text-(--text) text-balance">
           {project.title}
         </h3>
         <TechStack tags={project.tags} />
@@ -179,7 +179,7 @@ const ProjectRow = ({ project, index }: { project: Project; index: number }) => 
 
 export const EnterpriseSystems = () => {
   return (
-    <section id="work" className="lg:min-h-screen py-16 lg:py-24 px-4 md:px-6 lg:px-8">
+    <section id="work" className="min-h-screen py-16 lg:py-24 px-4 md:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: -20 }}

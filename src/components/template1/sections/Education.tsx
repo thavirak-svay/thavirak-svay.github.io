@@ -3,7 +3,7 @@
 import { GraduationCap } from "lucide-react";
 
 export const Education = () => (
-  <section className="py-20 px-6 md:px-20 relative z-10 border-t border-white/5">
+  <section className="min-h-screen flex items-center justify-center py-20 px-6 md:px-20 relative z-10 border-t border-white/5">
     <div className="max-w-4xl mx-auto text-center">
       <div className="inline-flex items-center gap-2 text-cyan-400 mb-6">
         <GraduationCap size={24} />

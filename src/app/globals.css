@@ -37,6 +37,11 @@
   color: var(--white);
 }
 
+@keyframes navbar-logo-pulse {
+  0%, 100% { filter: invert(0); }
+  50% { filter: invert(1); }
+}
+
 @layer utilities {
   .font-display {
     font-family: var(--font-display), 'Instrument Serif', Georgia, serif;
@@ -49,6 +54,11 @@
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+}
+
+body {
+  height: 100%;
 }
 
 .phil-item {

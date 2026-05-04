@@ -74,7 +74,7 @@ export const Leadership = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-[5fr_6fr] gap-8 lg:gap-16">
           <div>
-            <h2 className="font-display text-4xl lg:text-5xl font-normal leading-[1.05] tracking-tight text-(--text) text-balance">
+            <h2 className="font-display text-3xl lg:text-4xl font-normal leading-[1.05] tracking-tight text-(--text) text-balance">
               Beyond coding — leading teams, establishing standards, and driving
               platform success.
             </h2>
@@ -88,7 +88,7 @@ export const Leadership = () => {
               <ScrollRevealItem
                 key={area.title}
                 isLeft={i % 2 !== 0}
-                className="active:scale-[0.96] transition-transform"
+                className="transition-transform"
                 style={{ transitionDelay: `${i * 0.05}s` }}
               >
                 <div className="flex items-center gap-3 mb-4">

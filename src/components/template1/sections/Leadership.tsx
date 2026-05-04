@@ -53,7 +53,7 @@ const leadershipAreas = [
 
 export const Leadership = () => {
   return (
-    <section id="leadership" className="py-20 md:py-32 px-6 md:px-20 relative z-10 bg-[#040406]">
+    <section id="leadership" className="min-h-screen flex flex-col items-start justify-center py-20 md:py-32 px-6 md:px-20 relative z-10 bg-[#040406]">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -6,7 +6,7 @@ export const EngineeringPhilosophy = () => {
   return (
     <section
       id="about"
-      className="py-20 md:py-32 px-6 md:px-20 relative z-10 border-b border-white/5"
+      className="min-h-screen flex items-start justify-center py-20 md:py-32 px-6 md:px-20 relative z-10 border-b border-white/5"
     >
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col gap-12">

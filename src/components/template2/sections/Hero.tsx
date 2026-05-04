@@ -115,12 +115,12 @@ export const Hero = () => {
     <section
       id="home"
       ref={heroRef}
-      className="min-h-screen flex items-center px-4 md:px-6 lg:px-8 pb-6 md:pb-8 lg:pb-[8vh] relative overflow-hidden bg-gradient-to-b from-(--bg) via-(--bg) to-(--bg-alt)"
+      className="min-h-screen flex items-center px-4 md:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-b from-(--bg) via-(--bg) to-(--bg-alt)"
     >
       <div className="max-w-4xl mx-auto w-full relative z-10">
         <h1
           ref={headlineRef}
-          className="font-display text-[clamp(2.5rem,6vw,6rem)] font-normal leading-[1.1] tracking-tight text-(--text) mb-10"
+          className="font-display text-5xl md:text-[clamp(2rem,5vw,4.5rem)] font-normal leading-[1.1] tracking-tight text-(--text) mb-10"
         >
           <span className="hero-line-1 block mb-1">
             <span className="hero-word inline-block mr-[0.15em]">Hi,</span>

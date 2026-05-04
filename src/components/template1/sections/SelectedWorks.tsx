@@ -70,7 +70,7 @@ export const SelectedWorks = () => {
   return (
     <section
       id="projects"
-      className="py-20 md:py-32 px-6 md:px-20 relative bg-[#050507]"
+      className="min-h-screen flex flex-col items-start justify-center py-20 md:py-32 px-6 md:px-20 relative bg-[#050507]"
     >
       <div className="max-w-6xl mx-auto">
         <div className="mb-20 flex items-end justify-between">

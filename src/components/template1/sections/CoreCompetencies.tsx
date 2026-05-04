@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import { motion } from "framer-motion";
 import { Cpu, Container, Database, ShieldCheck } from "lucide-react";
 import styles from "../Template1.module.css";
-import { StatCard } from "../components/AnimatedStats";
+import { StatCard, type StatData } from "../components/AnimatedStats";
 import { calculateExperienceYears } from "../utils/helpers";
 
 export const CoreCompetencies = () => {
@@ -45,8 +45,15 @@ export const CoreCompetencies = () => {
     },
   ];
 
+  const stats: StatData[] = [
+    { label: "Years Experience", val: experienceYears, suffix: "+", isText: false },
+    { label: "Architecture", val: "Event-Driven", isText: true },
+    { label: "Focus", val: "Fintech", isText: true },
+    { label: "Domain", val: "Backend Systems", isText: true },
+  ];
+
   return (
-    <section id="skills" className="py-20 md:py-32 px-6 md:px-20 relative z-10">
+    <section id="skills" className="min-h-screen flex flex-col items-start justify-center py-20 md:py-32 px-6 md:px-20 relative z-10">
       <div className="mb-16 max-w-6xl mx-auto">
         <h2 className="font-display text-5xl md:text-7xl font-bold text-white mb-4 text-balance">
           CORE COMPETENCIES
@@ -57,12 +64,7 @@ export const CoreCompetencies = () => {
       {/* Stats Grid - Animated HUD Style */}
       <div className="max-w-6xl mx-auto mb-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {[
-            { label: "Years Experience", val: experienceYears, suffix: "+" },
-            { label: "Architecture", val: "Event-Driven", isText: true },
-            { label: "Focus", val: "Fintech", isText: true },
-            { label: "Domain", val: "Backend Systems", isText: true },
-          ].map((stat, i) => (
+          {stats.map((stat, i) => (
             <StatCard key={i} stat={stat} index={i} />
           ))}
         </div>

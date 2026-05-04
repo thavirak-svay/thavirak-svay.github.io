@@ -7,15 +7,16 @@ const navLinks = [
   { name: "Home", href: "#home" },
   { name: "Work", href: "#work" },
   { name: "Skills", href: "#skills" },
+  { name: "How I Work", href: "#how-i-work" },
   { name: "Experience", href: "#experience" },
   { name: "Leadership", href: "#leadership" },
-  { name: "How I Work", href: "#how-i-work" },
   { name: "Contact", href: "#contact" },
 ];
 
 const socialLinks = [
   { name: "LinkedIn", href: "https://linkedin.com/in/thavirak-svay" },
   { name: "GitHub", href: "https://github.com/thavirak-svay" },
+  { name: "Resume", href: "/resume.pdf" },
 ];
 
 export const Footer = () => {
@@ -30,14 +31,15 @@ export const Footer = () => {
     }
   };
 
-  return (
+return (
     <footer id="contact" className="w-full px-6 md:px-12 lg:px-20 py-16 md:py-24">
+      {/* Top Section: Location, Contact, Follow */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 pb-16 md:pb-24 border-b border-(--border)"
+        className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 pb-16 md:pb-24 border-b border-(--border)"
       >
         <div>
           <p className="font-body text-xs sm:text-sm uppercase tracking-[0.15em] text-(--muted) mb-4">
@@ -64,10 +66,11 @@ export const Footer = () => {
               href="mailto:thaavirak@gmail.com"
               className="block text-(--text) hover:text-(--accent) transition-colors duration-300"
             >
-thaavirak@gmail.com
+              thaavirak@gmail.com
             </a>
           </div>
         </div>
+
         <div>
           <p className="font-body text-xs sm:text-sm uppercase tracking-[0.15em] text-(--muted) mb-4">
             Follow
@@ -92,12 +95,13 @@ thaavirak@gmail.com
         </div>
       </motion.div>
 
+      {/* Navigation Section */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-        className="flex flex-col md:flex-row gap-8 md:gap-16 py-16 md:py-24"
+        className="flex flex-col md:flex-row gap-8 md:gap-16 py-16 md:py-24 border-b border-(--border)"
       >
         <div className="md:w-32 shrink-0">
           <p className="font-body text-xs sm:text-sm uppercase tracking-[0.15em] text-(--muted)">
@@ -110,12 +114,12 @@ thaavirak@gmail.com
               <span key={link.name} className="flex items-center">
                 <button
                   onClick={() => scrollToSection(link.href)}
-                  className="font-display text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-normal leading-[0.9] tracking-[-0.02em] text-(--text) hover:text-(--accent) transition-colors duration-300 cursor-pointer"
+                  className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal leading-[0.9] tracking-[-0.02em] text-(--text) hover:text-(--accent) transition-colors duration-300 cursor-pointer"
                 >
                   {link.name}
                 </button>
                 {index < navLinks.length - 1 && (
-                <span className="font-display text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-normal leading-[0.9] tracking-[-0.02em] text-(--muted) mx-2">
+                <span className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal leading-[0.9] tracking-[-0.02em] text-(--muted) mx-2">
                   /
                 </span>
                 )}
@@ -125,12 +129,13 @@ thaavirak@gmail.com
         </nav>
       </motion.div>
 
+      {/* Bottom Section */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-        className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pt-8 border-t border-(--border)"
+        className="flex items-center gap-6 pt-8"
       >
         <button
           onClick={scrollToTop}

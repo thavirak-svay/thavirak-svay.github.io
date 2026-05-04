@@ -54,7 +54,7 @@ export const Philosophy = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-[5fr_6fr] gap-8 lg:gap-16">
           <div>
-            <h2 className="font-display text-5xl lg:text-7xl font-normal leading-[1.05] tracking-tight text-(--text) text-balance">
+            <h2 className="font-display text-4xl lg:text-5xl font-normal leading-[1.05] tracking-tight text-(--text) text-balance">
               How I think about building systems that last.
             </h2>
             <p className="font-body text-lg text-(--muted) leading-relaxed font-light mt-6 text-pretty">
@@ -69,7 +69,7 @@ export const Philosophy = () => {
               <ScrollRevealItem
                 key={principle.title}
                 isLeft={i % 2 !== 0}
-                className="active:scale-[0.96] transition-transform"
+                className="transition-transform"
                 style={{ transitionDelay: `${i * 0.05}s` }}
               >
                 <div className="flex items-center gap-3 mb-3">

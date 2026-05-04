@@ -10,9 +10,9 @@ export const Navbar = () => {
   const navItems = [
     { label: "Work", anchor: "work" },
     { label: "Skills", anchor: "skills" },
+    { label: "How I Work", anchor: "how-i-work" },
     { label: "Experience", anchor: "experience" },
     { label: "Leadership", anchor: "leadership" },
-    { label: "How I Work", anchor: "how-i-work" },
   ];
 
   return (
@@ -27,9 +27,9 @@ export const Navbar = () => {
           
           <a
             href="#"
-            className="font-display text-sm md:text-base font-bold tracking-tight text-(--text-dark) active:scale-[0.96] transition-transform duration-150 ease-out"
+            className="active:scale-[0.96] transition-transform duration-150 ease-out"
           >
-            Thavirak Svay
+            <img src="/favicon.svg" alt="Thavirak Svay" className="w-8 h-8" />
           </a>
 
            
@@ -44,10 +44,11 @@ export const Navbar = () => {
               </a>
             ))}
             <a
-              href="mailto:thaavirak@gmail.com"
+              href="/resume.pdf"
+              target="_blank"
               className="ml-4 px-5 py-2 bg-(--text-dark) text-(--white) font-body text-xs uppercase tracking-widest active:scale-[0.96] transition-transform duration-150 ease-out hover:bg-(--accent)"
             >
-              Contact
+              Resume
             </a>
           </div>
 
@@ -100,11 +101,12 @@ export const Navbar = () => {
                 </a>
               ))}
               <a
-                href="mailto:thaavirak@gmail.com"
+                href="/resume.pdf"
+                target="_blank"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="mt-4 px-6 py-3 min-h-[44px] min-w-[44px] bg-(--text-dark) text-(--white) font-display font-bold text-center active:scale-[0.96] transition-transform duration-150 ease-out hover:bg-(--accent)"
               >
-                Contact
+                Resume
               </a>
             </div>
           </motion.div>

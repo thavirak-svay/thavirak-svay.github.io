@@ -82,7 +82,7 @@ export const Skills = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-[5fr_6fr] gap-8 lg:gap-16">
           <div>
-            <h2 className="font-display text-4xl lg:text-5xl font-normal leading-[1.05] tracking-tight text-(--text) text-balance">
+            <h2 className="font-display text-3xl lg:text-4xl font-normal leading-[1.05] tracking-tight text-(--text) text-balance">
               The tools I use to build reliable and robust systems.
             </h2>
             <p className="font-body text-lg text-(--muted) leading-relaxed font-light mt-6 text-pretty">
@@ -95,7 +95,7 @@ export const Skills = () => {
               <ScrollRevealItem
                 key={cat.category}
                 isLeft={i % 2 !== 0}
-                className="active:scale-[0.96] transition-transform"
+                className="transition-transform"
                 style={{ transitionDelay: `${i * 0.05}s` }}
               >
                 <h3 className="font-display text-xl lg:text-2xl font-normal text-(--accent) mb-4 text-balance">

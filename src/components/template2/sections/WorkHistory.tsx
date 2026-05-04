@@ -63,7 +63,6 @@ const experiences: Experience[] = [
       "NuxtJS",
       "GoLang",
       "KYC/AML APIs",
-      "Identity Verification Systems",
     ],
     highlight: false,
   },
@@ -79,7 +78,8 @@ const experiences: Experience[] = [
       "Developed EMR (Electronic Medical Records) system deployed to 10+ government hospitals — role-based access, patient management, appointment management",
     ],
     stack: [
-      "Java (Spring Boot)",
+      "Java",
+      "Spring Boot",
       "ReactJS",
       "WebSockets",
       "PostgreSQL",
@@ -113,7 +113,7 @@ export const WorkHistory = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.5 }}
-          className="font-display text-3xl md:text-4xl lg:text-5xl font-normal text-(--text) mb-16 lg:mb-24 tracking-tight text-balance"
+          className="font-display text-3xl md:text-4xl lg:text-4xl font-normal text-(--text) mb-16 lg:mb-24 tracking-tight text-balance"
         >
           Work History
         </motion.h2>

@@ -1,11 +1,16 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Mail, Phone, Linkedin, Globe } from "lucide-react";
 
 export const Footer = () => {
+  const [currentYear, setCurrentYear] = useState(2024);
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear());
+  }, []);
   return (
-    <footer className="bg-black py-12 md:py-20 px-6 md:px-20 border-t border-white/10 relative overflow-hidden">
+    <footer className="min-h-screen flex flex-col items-start justify-center bg-black py-12 md:py-20 px-6 md:px-20 border-t border-white/10 relative">
       <div className="whitespace-nowrap overflow-hidden mb-12 opacity-10">
         <motion.div
           animate={{ x: ["0%", "-50%"] }}
@@ -65,7 +70,7 @@ export const Footer = () => {
             Operational / Systems Active
           </div>
           <div className="mt-8 text-slate-400 text-[10px] font-mono text-right">
-            © 2024 THAVIRAK SVAY. <br /> ENGINEERED IN CAMBODIA.
+            © {currentYear} THAVIRAK SVAY. <br /> ENGINEERED IN CAMBODIA.
           </div>
         </div>
       </div>

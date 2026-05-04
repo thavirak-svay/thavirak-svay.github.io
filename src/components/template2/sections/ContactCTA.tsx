@@ -45,7 +45,7 @@ export const ContactCTA = () => {
            Contact
          </div>
 
-<h2 className="font-display text-[clamp(3rem,9vw,9rem)] font-normal leading-[0.9] tracking-tight text-(--text) mb-12 text-wrap balance">
+<h2 className="font-display text-[clamp(2rem,6vw,5rem)] font-normal leading-[0.9] tracking-tight text-(--text) mb-12 text-wrap balance">
            Ready to build
            <br />
            something that

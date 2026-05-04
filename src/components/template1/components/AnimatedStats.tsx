@@ -23,7 +23,22 @@ const AnimatedCounter = ({ value }: { value: number }) => {
   return <span ref={nodeRef}>0</span>;
 };
 
-export const StatCard = ({ stat, index }: { stat: any; index: number }) => {
+interface TextStat {
+  label: string;
+  val: string;
+  isText: true;
+}
+
+interface CounterStat {
+  label: string;
+  val: number;
+  suffix?: string;
+  isText: false;
+}
+
+export type StatData = TextStat | CounterStat;
+
+export const StatCard = ({ stat, index }: { stat: StatData; index: number }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}

@@ -67,7 +67,7 @@ export const HowIWork = () => {
           >
             <div className="systems-inner">
               <div className="systems-content">
-                <h2 className="font-display text-4xl lg:text-6xl font-normal leading-[1.05] tracking-tight text-(--text) mb-4 text-wrap balance">
+                <h2 className="font-display text-4xl lg:text-5xl font-normal leading-[1.05] tracking-tight text-(--text) mb-4 text-wrap balance">
                   {panel.title}
                 </h2>
                 <p className="font-body text-lg text-(--muted) leading-relaxed font-light text-wrap pretty">
