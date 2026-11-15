@@ -11,6 +11,7 @@ import {
 import { SectionNav } from "@/components/portfolio/SectionNav";
 import { LogoField } from "@/components/portfolio/LogoField";
 import { Resume } from "@/components/portfolio/Resume";
+import { Years } from "@/components/portfolio/Years";
 import { PrintButton } from "@/components/portfolio/PrintButton";
 import {
   siOpenjdk,
@@ -77,7 +78,7 @@ export default function Home() {
                 Backend Developer
               </p>
               <p className="text-base text-(--text-body) leading-relaxed mt-5 max-w-[40ch]">
-                {profile.summary(years)}
+                {profile.summary()}
               </p>
 
               <dl
@@ -85,10 +86,10 @@ export default function Home() {
                 className="grid grid-cols-2 gap-x-6 gap-y-4 sm:gap-y-3 mt-6 max-w-[24rem]"
               >
                 {[
-                  { label: "Experience", value: `${years}+ years` },
+                  { label: "Experience", value: <><Years built={years} />+ years</> },
                   { label: "Based in", value: "Phnom Penh, Cambodia" },
-                  { label: "Core stack", value: "Java, Spring Boot, WSO2" },
-                  { label: "Domains", value: "Banking, commerce" },
+                  { label: "Tech stack", value: "Java, Spring Boot, NestJS, Node.js" },
+                  { label: "Domains", value: "Banking, Fintech, Ecommerce" },
                 ].map((f) => (
                   <div key={f.label}>
                     <dt className="font-display text-sm font-medium text-(--muted)">

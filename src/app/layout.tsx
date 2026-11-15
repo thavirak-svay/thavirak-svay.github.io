@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Familjen_Grotesk, IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
-import { experienceYears } from "@/components/portfolio/content";
+import { experienceYears, profile } from "@/components/portfolio/content";
 
 const display = Familjen_Grotesk({
   subsets: ["latin"],
@@ -15,7 +15,7 @@ const body = IBM_Plex_Sans({
 });
 
 const title = "Thavirak Svay, Backend Developer";
-const description = `Software developer in Phnom Penh with ${experienceYears()}+ years of experience across frontend and backend, now focused on backend engineering. Currently on Wing Bank’s platform team, working on Java and Spring Boot microservices, account security and the WSO2 API gateway.`;
+const description = profile.summary(experienceYears());
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://thavirak-svay.github.io"),

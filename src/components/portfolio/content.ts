@@ -15,13 +15,24 @@ export const experienceYears = () =>
     (Date.now() - careerStart.getTime()) / (365.25 * 24 * 60 * 60 * 1000)
   );
 
+const intro =
+  "specialising in secure, scalable and maintainable systems. Currently part of Wing Bank’s platform team, improving and maintaining the in-house framework that forms the backbone of the bank’s microservices, securing customer accounts through identity and access services, and streaming real-time updates to the app.";
+const path =
+  "Started out in frontend, moved through full-stack and grew into backend.";
+const ai =
+  "Optimistic about AI-assisted development and already uses coding agents in daily work.";
+
 export const profile = {
   name: "Thavirak Svay",
   title: "Backend Developer",
   location: "Phnom Penh, Cambodia",
   website: "thavirak-svay.github.io",
-  summary: (years: number) =>
-    `Software developer with ${years}+ years of experience across frontend and backend, specialising in backend engineering. Currently part of Wing Bank’s platform team, building the Java and Spring Boot foundation that the bank’s microservices run on, and the security layer that protects them.`,
+  // The site shows the years in its facts grid. The CV skips the path,
+  // which its work history already covers, to stay on one A4 page.
+  summary: (years?: number) =>
+    years
+      ? `Backend developer with ${years}+ years of experience, ${intro} ${ai}`
+      : `Backend developer ${intro} ${path} ${ai}`,
 };
 
 export const shortCompany = (name: string) =>
@@ -53,9 +64,9 @@ export const experiences: Job[] = [
         items: [
           "Maintain and extend the in-house framework that all of Wing Bank’s microservices are built on",
           "Build account security microservices and update their authentication and authorization flows whenever the bank launches a new account type or product",
-          "Develop a distributed set of server-sent event services that stream real-time updates to the Wing mobile app and scale horizontally with traffic",
+          "Develop a distributed set of server-sent event services that consume events from Apache Kafka, stream real-time updates to the Wing mobile app and scale horizontally with traffic",
           "Implement device attestation so that only requests from genuine devices reach the API gateway and microservices",
-          "Use WSO2 API Manager for routing and rate limiting at the gateway, and WSO2 Identity Server for OAuth2 and OpenID Connect authentication",
+          "Use WSO2 API Manager for routing and rate limiting at the gateway, and WSO2 Identity Server for OAuth 2.0 and OpenID Connect authentication",
         ],
       },
       {
@@ -72,7 +83,7 @@ export const experiences: Job[] = [
         period: "October 2022 – February 2024",
         items: [
           "Shipped new features for WingMall, Wing’s food delivery platform, in React as part of a Scrum team",
-          "Built serverless APIs and event-driven triggers on Firebase Cloud Functions for the WingMall web and mobile apps",
+          "Built serverless APIs and event-driven triggers for the WingMall web and mobile apps with Cloud Functions for Firebase",
           "Designed Cloud Firestore data models and wrote Firebase Security Rules to enforce authorization on application data",
         ],
       },
@@ -80,6 +91,7 @@ export const experiences: Job[] = [
     stack: [
       "Java",
       "Spring Boot",
+      "Apache Kafka",
       "WSO2 API Manager",
       "WSO2 Identity Server",
       "NestJS",
@@ -167,25 +179,21 @@ export const projects: Project[] = [
 ];
 export const stack = [
   { category: "Languages", items: ["Java", "Go", "TypeScript", "JavaScript"] },
+  { category: "Backend", items: ["Spring Boot", "NestJS", "Node.js", "Express"] },
   {
-    category: "Backend frameworks",
-    items: ["Spring Boot", "NestJS", "Node.js", "Express"],
+    category: "Data and messaging",
+    items: ["PostgreSQL", "Oracle Database", "Apache Kafka"],
   },
   {
-    category: "APIs and protocols",
-    items: ["REST", "Server-sent events", "OAuth2", "OpenID Connect"],
-  },
-  {
-    category: "Gateway and identity",
-    items: ["WSO2 API Manager", "WSO2 Identity Server"],
-  },
-  {
-    category: "Data stores",
-    items: ["Cloud Firestore", "Dgraph", "Elasticsearch"],
-  },
-  {
-    category: "Cloud and delivery",
-    items: ["Firebase Cloud Functions", "Argo CD"],
+    category: "APIs and security",
+    items: [
+      "REST",
+      "Server-sent events",
+      "OAuth 2.0",
+      "OpenID Connect",
+      "WSO2 API Manager",
+      "WSO2 Identity Server",
+    ],
   },
   { category: "Frontend", items: ["React", "Next.js", "Nuxt"] },
 ];
