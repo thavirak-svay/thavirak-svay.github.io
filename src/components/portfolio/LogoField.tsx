@@ -45,6 +45,13 @@ export const LogoField = ({ logos }: { logos: Logo[] }) => {
     let onScreen = true;
     const t0 = performance.now();
 
+    // random order on every load
+    const order = logos.map((_, i) => i);
+    for (let i = order.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [order[i], order[j]] = [order[j], order[i]];
+    }
+
     // Simple Icons pad their 24x24 viewBox differently; measure the real bounds so all logos render the same size.
     const probe = document.createElement("canvas");
     probe.width = probe.height = 240;
@@ -98,12 +105,18 @@ export const LogoField = ({ logos }: { logos: Logo[] }) => {
         80,
         Math.min(bandBottom - bandTop, w * (narrow ? 0.55 : 0.42), 220)
       );
-      const cx = narrow ? w / 2 : Math.min(w * 0.7, w - size / 2 - 16);
       const cy = (bandTop + bandBottom) / 2;
+      const maxW = w * (narrow ? 0.9 : 0.8);
+      const maxH = Math.max(80, bandBottom - bandTop);
 
       masks = logos.map((logo, n) => {
         const b = bounds[n];
-        const s = size / Math.max(b.w, b.h);
+        // same area for every logo, so wide ones (Go) don't look smaller than square ones
+        // 0.8: leave breathing room around the logo
+        const s =
+          0.8 * Math.min(size / Math.sqrt(b.w * b.h), maxW / b.w, maxH / b.h);
+        const half = (b.w * s) / 2;
+        const cx = narrow ? w / 2 : Math.max(half + 16, Math.min(w * 0.7, w - half - 16));
         const ox = cx - (b.x + b.w / 2) * s;
         const oy = cy - (b.y + b.h / 2) * s;
         o.setTransform(1, 0, 0, 1, 0, 0);
@@ -145,8 +158,8 @@ export const LogoField = ({ logos }: { logos: Logo[] }) => {
       const t = ms / 1000;
       const k = Math.floor(ms / (HOLD + MORPH));
       const phase = ms % (HOLD + MORPH);
-      const a = masks[k % masks.length];
-      const b = masks[(k + 1) % masks.length];
+      const a = masks[order[k % order.length]];
+      const b = masks[order[(k + 1) % order.length]];
       const mix = phase < HOLD ? 0 : ease((phase - HOLD) / MORPH);
       const buckets: number[][] = TONES.map(() => []);
 

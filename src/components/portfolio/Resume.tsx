@@ -31,7 +31,7 @@ export const Resume = () => {
     <article className="resume hidden print:block text-(--text)">
       <div className="h-[5mm] bg-(--accent)" />
       <div className="grid grid-cols-[66mm_1fr] min-h-[292mm]">
-        <aside className="bg-(--white) border-r border-(--border-dark) px-[8mm] py-[11mm] space-y-[6mm]">
+        <aside className="bg-(--white) border-r border-(--border-dark) px-[7mm] py-[11mm] space-y-[6mm]">
           <div>
             <h1 className="font-display text-[22pt] font-semibold leading-none tracking-tight">
               {profile.name}

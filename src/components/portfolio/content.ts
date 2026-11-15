@@ -16,7 +16,7 @@ export const experienceYears = () =>
   );
 
 const intro =
-  "specialising in secure, scalable and maintainable systems. Currently part of Wing Bank’s platform team, improving and maintaining the in-house framework that forms the backbone of the bank’s microservices, securing customer accounts through identity and access services, and streaming real-time updates to the app.";
+  "specialising in secure, scalable and maintainable systems. Currently part of Wing Bank’s platform team, improving and maintaining the in-house framework that forms the backbone of the bank’s microservices, building security services for user accounts and devices, and streaming real-time updates to the app.";
 const path =
   "Started out in frontend, moved through full-stack and grew into backend.";
 const ai =
